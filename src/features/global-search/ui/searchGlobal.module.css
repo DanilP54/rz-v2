@@ -1,0 +1,12 @@
+.trigger {
+    border-radius: var(--border-radius-bg-hover);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    
+    @mixin hover {
+        background-color: var(--mantine-color-dark-light-hover);
+    }
+}
+
+

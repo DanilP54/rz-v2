@@ -1,0 +1,8 @@
+.links a {
+    font-size: 14px;
+    border-radius: var(--border-radius-bg-hover);
+    padding: 5px 5px;
+    @mixin hover {
+        background-color: var(--mantine-color-dark-light-hover);
+    }
+}

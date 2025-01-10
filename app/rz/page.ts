@@ -1,0 +1,1 @@
+export {RzPage as default} from "@/pages/rz";

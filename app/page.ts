@@ -1,0 +1,1 @@
+export { NavigatorPage as default } from "@/pages/navigator";

@@ -1,0 +1,16 @@
+.logo {}
+
+.dark { 
+    display: none;
+    @mixin light {
+      display: block;
+    }
+}
+  
+.light {
+    display: none; 
+
+    @mixin dark {
+      display: block;
+    }
+}

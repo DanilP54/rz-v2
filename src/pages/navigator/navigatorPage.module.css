@@ -1,0 +1,10 @@
+.link_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  font-size: 20px;
+}
+
+
+

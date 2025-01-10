@@ -1,0 +1,1 @@
+export {RzLayout as default} from "@/app/layouts/RzLayout";

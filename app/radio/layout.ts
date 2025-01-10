@@ -1,0 +1,1 @@
+export {RadioLayout as default} from "@/app/layouts/RadioLayout";

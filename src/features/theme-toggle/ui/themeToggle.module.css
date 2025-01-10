@@ -1,0 +1,6 @@
+.toggle {
+    width: 13px;
+    aspect-ratio: 1;
+    cursor: pointer;
+    background-color: light-dark(black, white);
+}

@@ -1,0 +1,14 @@
+:root {
+    --border-radius-bg-hover: .3rem;
+}
+
+a {
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+body {
+    min-height: 100svh;
+}
