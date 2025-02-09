@@ -1,14 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1cacb723-cc7a-469c-a9e2-1af8eea42918" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/next-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next-env.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gigateam/gigateam.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-art/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-art/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-books/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-books/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-movie/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-movie/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-music/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-music/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-art/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-art/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-art/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-books/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-books/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-books/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-movie/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-movie/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-movie/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-music/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-music/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(instincts)/instincts-music/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-art/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-art/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-books/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-books/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-movie/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-movie/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-music/loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-music/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/layouts/ClientComponent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/loadings/BalanceLoading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/loadings/InstinctsLoading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/loadings/IntellectLoading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/balance/art/BalanceArt.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/balance/art/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/balance/books/BalanceBooks.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/balance/books/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/balance/movie/BalanceMovie.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/balance/movie/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/balance/music/BalanceMusic.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/balance/music/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/art/InstinctsArt.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/art/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/books/InstinctsBooks.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/books/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/movie/InstinctsMovie.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/movie/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/InstinctsMusic.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/CardListSkeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/Filter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/FilterTogglesSkeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/ResultList.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/SearchBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/SearchBarSkeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/TopBarLayout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/TopBarSkeleton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/searchBar.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/searchBarSkeleton.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/intellect/art/IntellectArt.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/intellect/art/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/intellect/books/IntellectMovie.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/intellect/books/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/intellect/movie/IntellectMovie.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/intellect/movie/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/intellect/music/IntellectMusic.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/intellect/music/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/rz/AnnouncementsGrid.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/rz/announcements.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/api/db.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/carusel/Carousel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/carusel/carousel.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/quote-ticker/QuoteTicker.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/quote-ticker/quoteTicker.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/top-bar/TopBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/ui/top-bar/topBar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/feed/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/feed/page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/rz/page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/rz/page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/favicon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/theme.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layouts/RadioLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layouts/RadioLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layouts/RootLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layouts/RootLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layouts/RzLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layouts/RzLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/mantine-theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/mantine-theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/global-search/ui/SearchGlobal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/global-search/ui/SearchGlobal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/feed/FeedPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/FeedPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/feed/ui/PostList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/ui/PostList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/feed/widgets/feed-tabs/FeedTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/ui/FeedTabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/feed/widgets/feed-tabs/feedTabs.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/feed/ui/feedTabs.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/instincts-music/InstinctsMusic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/instincts/music/ui/filter.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/instincts-music/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/instincts-music/ui/SearchBar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/rz/RzPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/rz/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rz/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/config/app-write.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/config/app-write.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/widgets/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/LangSwitchLinks.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/header/ui/Layout.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,9 +120,9 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2rNYa0jXiv6YaSZkZMMeI0expM2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -33,11 +131,27 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/code/rz-v2"
+    "last_opened_file_path": "F:/code/rz-v2/node",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "ts.external.directory.path": "F:\\code\\rz-v2\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.120" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -46,7 +160,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1736401059823</updated>
+      <workItem from="1737209385223" duration="97000" />
+      <workItem from="1737222518190" duration="964000" />
+      <workItem from="1737397035948" duration="187000" />
+      <workItem from="1737397235097" duration="6908000" />
+      <workItem from="1737479486542" duration="4072000" />
+      <workItem from="1738676916096" duration="20000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

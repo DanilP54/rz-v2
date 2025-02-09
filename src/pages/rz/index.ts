@@ -1,1 +1,1 @@
-export {default as RzPage} from './RzPage';
+export {default as AnnouncementsGrid} from './AnnouncementsGrid';

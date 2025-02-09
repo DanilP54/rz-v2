@@ -1,3 +1,4 @@
 {
-    "editor.fontFamily": "IBM Plex Mono Medium"
+    "editor.fontWeight": "normal",
+    "editor.fontFamily": "JetBrains Mono Medium"
 }

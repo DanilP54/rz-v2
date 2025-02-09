@@ -1,0 +1,25 @@
+.wrapper {
+    position: relative;
+}
+
+.input_wrapper {
+    background-color: transparent;
+
+}
+
+.input {
+    background-color: rgb(239, 239, 239);
+    color: black;    
+    border-radius: 5px;
+    border: 3px solid rgba(36, 36, 36, 0.158);
+}
+
+
+.input::placeholder {
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.536);
+}
+
+.input:disabled {
+    background-color: transparent;
+}

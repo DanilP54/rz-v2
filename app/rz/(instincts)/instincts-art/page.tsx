@@ -1,0 +1,1 @@
+export {InstinctsArtPage as default} from '@/pages/instincts/art';

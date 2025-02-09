@@ -1,0 +1,1 @@
+export {IntellectMoviePage as default} from '@/pages/intellect/movie';
