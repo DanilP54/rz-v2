@@ -1,0 +1,54 @@
+/* todo: 
+    сделать расчёт ширини исходя из padding header и width logo, 
+    чтобы кнопка была по ширине ровно на границе логотипа
+*/
+
+.toggle {
+    width: 120px;
+    min-height: 37px;
+}
+
+.toggle.instincts {
+    background-color: var(--instincts-button-bg-color);
+}
+
+.toggle.intellect {
+    background-color: var(--intellect-button-bg-color);
+}
+
+.toggle.balance {
+    background-color: var(--balance-button-bg-color);
+}
+
+.panel {
+    flex: 1 1 0;
+    gap: 100px; 
+    align-items: center;
+    padding: 0 0 0 100px;
+}
+
+.panel.instincts {
+    background-color: var(--instincts-button-bg-color);
+}
+.panel.intellect {
+    background-color: var(--intellect-button-bg-color);
+}
+.panel.balance {
+    background-color: var(--balance-button-bg-color);
+}
+
+.link {
+    font-size: 14px;
+    padding: 1px 15px;
+    color: white;
+    font-weight: bold;
+    border-radius: 15px;
+    @mixin hover {
+        background-color: var(--mantine-color-dark-light-hover);
+    }
+}
+
+.link.active {
+    background-color: white;
+    color: black;
+}
