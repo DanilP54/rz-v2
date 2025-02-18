@@ -1,4 +1,7 @@
 {
-    "editor.fontWeight": "normal",
-    "editor.fontFamily": "JetBrains Mono Medium"
+  "editor.fontWeight": "500",
+  "editor.fontFamily": "JetBrains Mono Medium",
+  "editor.fontSize": 15,
+  "editor.cursorBlinking": "blink",
+  "editor.cursorStyle": "line"
 }

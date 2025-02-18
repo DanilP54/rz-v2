@@ -43,6 +43,6 @@ export const getAllAnnouncements = async () => {
 
     return documents.map(adaptAnnouncementDTO);
   } catch (error) {
-    throw new Error("Announcements not found");
+    throw new Error(`Error, ${error.message}`);
   }
 };

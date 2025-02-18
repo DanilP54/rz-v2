@@ -4,9 +4,8 @@ import { ReactNode, useState } from "react";
 import classes from "./searchGlobal.module.css";
 
 export const SearchGlobal = ({ trigger }: { trigger: ReactNode }) => {
-  
   const [query, setQuery] = useState("");
-  
+
   return (
     <>
       <div onClick={spotlight.open} className={classes.trigger}>

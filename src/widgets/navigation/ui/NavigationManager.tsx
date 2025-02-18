@@ -80,7 +80,8 @@ function Links({
 }
 
 function InitialPanel({ panel }: { panel: NavigationPanel }) {
-  const { updateActivePanel, initialNewState } = useNavigationManager();
+  
+  const { initialNewState } = useNavigationManager();
 
   const pathname = usePathname();
 

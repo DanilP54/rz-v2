@@ -1,10 +1,3 @@
 export function Header() {
-    
-    
-    
-    return (
-        <>
-
-        </>
-    )
+    console.log(1)
 }
