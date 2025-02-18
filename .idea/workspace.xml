@@ -4,7 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="1cacb723-cc7a-469c-a9e2-1af8eea42918" name="Changes" comment="" />
+=======
+    <list default="true" id="1cacb723-cc7a-469c-a9e2-1af8eea42918" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-art/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-books/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-movie/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(balance)/balance-music/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-art/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-books/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-movie/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/rz/(intellect)/intellect-music/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/.idea/node.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/app-header/AppHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/app-header/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/app-header/ui/LangSwitchLinks.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/app-header/ui/Layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/navigation/Navigation.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/navigation/config/navigationConfig.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/navigation/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/navigation/lib/useNavigationManager.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/navigation/lib/useToggle.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/navigation/ui/NavigationManager.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widgets/navigation/ui/navogationManager.module.css" afterDir="false" />
+    </list>
+>>>>>>> dev
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +67,11 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+<<<<<<< HEAD
     &quot;last_opened_file_path&quot;: &quot;F:/code/rz-v2/node&quot;,
+=======
+    &quot;last_opened_file_path&quot;: &quot;F:/code/rz-v2&quot;,
+>>>>>>> dev
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -52,7 +85,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.120" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-PS-243.23654.115" />
+        <option value="bundled-php-predefined-a98d8de5180a-4c3855d0ab16-com.jetbrains.php.sharedIndexes-PS-243.23654.115" />
       </set>
     </attachedChunks>
   </component>
@@ -70,10 +104,41 @@
       <workItem from="1737397235097" duration="6908000" />
       <workItem from="1737479486542" duration="4072000" />
       <workItem from="1738676916096" duration="20000" />
+      <workItem from="1739519579798" duration="146000" />
+      <workItem from="1739794083124" duration="48000" />
+      <workItem from="1739795590826" duration="22000" />
+      <workItem from="1739902531801" duration="1292000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="refфсÐactor/navigationManager" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
