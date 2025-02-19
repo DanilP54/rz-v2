@@ -1,19 +1,16 @@
-import { Segments } from "../navigationPanels";
+import { Segments } from "../config/navigationConfig";
 import { useNavigationManager } from "./useNavigationManager";
 
 export const useToggle = (segment: Segments) => {
-    const { updatePanel, currentPanelIsOpen } = useNavigationManager()
+  
+  const { openClosePanel, panelIsOpen } = useNavigationManager();
 
-    const toggle = () => {
-        updatePanel(segment)
-    }
+  const toggle = () => {
+    openClosePanel(segment);
+  };
 
-    const isOpen = currentPanelIsOpen(segment)
-
-    return {
-        toggle,
-        isOpen,
-    }
-}
-
-
+  return {
+    toggle,
+    isOpen: panelIsOpen(segment),
+  };
+};

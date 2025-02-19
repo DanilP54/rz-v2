@@ -1,6 +1,7 @@
-import { createContext, use } from "react";
+import { createContext, use, useLayoutEffect } from "react";
 import { Segments } from "../config/navigationConfig";
 import { usePathname } from "next/navigation";
+import { Segment } from "next/dist/server/app-render/types";
 
 export type NavPanelState = {
   readonly segment: Segments;
@@ -9,15 +10,14 @@ export type NavPanelState = {
 };
 
 export type NavigationManagerContext = {
-  navPanels: NavPanelState[] | [];
-  setNavPanels: React.Dispatch<React.SetStateAction<NavPanelState[] | []>>;
+  navPanelsState: NavPanelState[] | [];
+  setNavPanelsState: React.Dispatch<React.SetStateAction<NavPanelState[] | []>>;
 };
 
 export const NavigationManagerContext =
   createContext<NavigationManagerContext | null>(null);
 
 export function useNavigationManager() {
-  const pathname = usePathname();
 
   const context = use(NavigationManagerContext);
 
@@ -27,50 +27,43 @@ export function useNavigationManager() {
     );
   }
 
-  const { navPanels, setNavPanels } = context;
+  const { navPanelsState, setNavPanelsState } = context;
 
-  const updatePanel = (segment: Segments) => {
-    setNavPanels((panel) =>
-      panel.map((item) => handleUpdatePanelState(segment, item))
+  const openClosePanel = (segment: Segments) => {
+    setNavPanelsState((panel) =>
+      panel.map((item) => handleOpenClosePanelState(segment, item))
     );
   };
 
-  const currentPanelIsOpen = (segment: Segments) => {
-    return navPanels.find((s) => s.segment === segment)?.isOpen || false;
+  const setActivePanel = (segment: Segment) => {
+    setNavPanelsState(s => {
+      return s.map((s) => handleUpdateActivePanel(segment, s));
+    })
+  }
+
+  const panelIsOpen = (segment: Segments) => {
+    return navPanelsState.find((s) => s.segment === segment)?.isOpen || false;
   };
 
-  const initialNewState = (segment: Segments) => {
-    const matchPath = pathname?.includes(segment);
-    setNavPanels((s) => [
-      ...s,
-      {
-        segment,
-        isOpen: matchPath ? true : false,
-        isActive: matchPath ? true : false,
-      },
-    ]);
-  };
+  const panelIsActive = (segment: Segment) => {
+    return navPanelsState.find((s) => s.segment === segment)?.isActive || false;
+  }
 
-  const updateActivePanel = (segment: Segments) => {
-    setNavPanels((panel) =>
-      panel.map((item) => handleUpdateActivePanel(segment, item))
-    );
-  };
-
-  const getActivePanel = (segment: Segments) => {
-    return navPanels.find((s) => s.segment === segment)?.isActive;
+  const initialNewPanel = (segment: Segments) => {
+    if (isExistSegment(segment, navPanelsState)) return;
+    setNavPanelsState((s) => [...s, { segment, isOpen: false, isActive: false }]);
   };
 
   return {
-    getActivePanel,
-    updateActivePanel,
-    currentPanelIsOpen,
-    updatePanel,
-    initialNewState,
+    panelIsOpen,
+    openClosePanel,
+    initialNewPanel,
+    panelIsActive,
+    setActivePanel
   };
 }
 
-function handleUpdatePanelState(segment: Segments, item: NavPanelState) {
+function handleOpenClosePanelState(segment: Segments, item: NavPanelState) {
   if (item.segment !== segment && item.isOpen && !item.isActive) {
     return { ...item, isOpen: false };
   }
@@ -92,4 +85,8 @@ function handleUpdateActivePanel(segment: Segments, item: NavPanelState) {
   }
 
   return item;
+}
+
+function isExistSegment(segment: Segments, state: NavPanelState[]) {
+  return state.some((panel) => panel.segment === segment);
 }

@@ -15,11 +15,10 @@ import clsx from "clsx";
 import type { NavigationPanel, Segments } from "../config/navigationConfig";
 
 export function NavigationManager({ children }: { children: ReactNode }) {
-  const [navPanels, setNavPanels] = useState<NavPanelState[]>([]);
-
-
+  const [navPanelsState, setNavPanelsState] = useState<NavPanelState[]>([]);
+  console.log(navPanelsState);
   return (
-    <NavigationManagerContext value={{ navPanels, setNavPanels }}>
+    <NavigationManagerContext value={{ navPanelsState, setNavPanelsState }}>
       <Stack h={"min-content"} gap={0}>
         {children}
       </Stack>
@@ -27,83 +26,30 @@ export function NavigationManager({ children }: { children: ReactNode }) {
   );
 }
 
-function Toggle({
-  children,
-  segment,
-}: {
-  children: ReactNode;
-  segment: Segments;
-}) {
-  const { getActivePanel } = useNavigationManager();
-  const { isOpen, toggle } = useToggle(segment);
-  const pathname = usePathname();
-
-  const handleToggle = () => {
-    toggle();
-  };
-
-  return (
-    <Flex style={{ order: pathname?.includes(segment) ? "1" : "0" }}>
-      <UnstyledButton
-        role="navigation"
-        className={clsx(classes.toggle, classes[segment])}
-        onClick={handleToggle}
-      ></UnstyledButton>
-      {(pathname?.includes(segment) || isOpen) && (
-        <Flex className={clsx(classes.panel, classes[segment])} component="nav">
-          {children}
-        </Flex>
-      )}
-    </Flex>
-  );
-}
-
-function Links({
-  children,
-  path,
-  active,
-  segment,
-}: {
-  active: boolean;
-  children: ReactNode;
-  path: string;
-  segment: Segments;
-}) {
-  return (
-    <Link
-      className={clsx(classes.link, { [classes.active]: active })}
-      href={path}
-    >
-      {children}
-    </Link>
-  );
-}
+// INITITAL_PANEL ---------------------------------------------------------------
 
 function InitialPanel({ panel }: { panel: NavigationPanel }) {
-  
-  const { initialNewState } = useNavigationManager();
+
+  const { initialNewPanel, panelIsActive } = useNavigationManager();
 
   const pathname = usePathname();
 
-  useLayoutEffect(() => {
-    initialNewState(panel.segment);
-  }, []);
+  const { setActivePanel } = useNavigationManager();
 
-  // useLayoutEffect(() => {
-  //   for (const prop of panel.menuItems) {
-  //     if (prop.path === pathname) {
-  //       updateActivePanel(panel.segment);
-  //     }
-  //   }
-  // }, [pathname]);
+  useLayoutEffect(() => {
+    initialNewPanel(panel.segment);
+  }, [panel.segment]);
 
   return (
-    <Toggle segment={panel.segment}>
+    <Toggle
+      segment={panel.segment}
+      panelIsActive={panelIsActive(panel.segment)}
+    >
       {panel.menuItems.map((link) => (
         <Links
           key={link.label}
           path={link.path}
-          active={link.path === pathname}
+          isActive={panelIsActive(panel.segment)}
           segment={panel.segment}
         >
           {link.label}
@@ -112,6 +58,59 @@ function InitialPanel({ panel }: { panel: NavigationPanel }) {
     </Toggle>
   );
 }
+
+// TOGGLE ---------------------------------------------------------------
+
+function Toggle({
+  children,
+  segment,
+  panelIsActive,
+}: {
+  children: ReactNode;
+  segment: Segments;
+  panelIsActive: boolean;
+}) {
+
+  const { isOpen, toggle } = useToggle(segment);
+
+  return (
+    <Flex style={{ order: panelIsActive ? "1" : "0" }}>
+      <UnstyledButton
+        role="navigation"
+        className={clsx(classes.toggle, classes[segment])}
+        onClick={toggle}
+      ></UnstyledButton>
+      {isOpen && (
+        <Flex className={clsx(classes.panel, classes[segment])} component="nav">
+          {children}
+        </Flex>
+      )}
+    </Flex>
+  );
+}
+
+// LINKS ---------------------------------------------------------------
+
+function Links({
+  children,
+  path,
+  isActive,
+}: {
+  isActive: boolean;
+  children: ReactNode;
+  path: string;
+}) {
+  return (
+    <Link
+      className={clsx(classes.link, { [classes.active]: isActive })}
+      href={path}
+    >
+      {children}
+    </Link>
+  );
+}
+
+// SET NAMESPACE
 
 InitialPanel.displayName = "NavigationManager.InitialPanel";
 Links.displayName = "NavigationManager.Links";

@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 };
 
 export function RootLayout({ children }: { children: ReactNode }) {
-  
-  
+
+
   return (
     <html lang="ru" {...mantineHtmlProps}>
       <head>
@@ -26,7 +26,7 @@ export function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <Providers>
-          <Container fluid p={0} maw={'112rem'} h={'100svh'}>
+          <Container fluid p={0} maw={'130rem'} h={'100svh'}>
             {children}
           </Container>
         </Providers>

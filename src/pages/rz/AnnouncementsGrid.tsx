@@ -5,15 +5,15 @@ import { getAllAnnouncements } from '@/shared/api/db';
 
 async function AnnouncementsGrid() {
 
-    const data = await getAllAnnouncements();
-    
-    const largeBanner = data.filter((item) => item.isLargeBanner === true);
-    const smallBanner = data.filter((item) => item.isSmallBanner === true);
+    // const data = await getAllAnnouncements();
+
+    // const largeBanner = data.filter((item) => item.isLargeBanner === true);
+    // const smallBanner = data.filter((item) => item.isSmallBanner === true);
 
     return (
         <div className={classes.container}>
-            <div className={classes.big}>
-                <Carousel data={largeBanner} />
+            {/* <div className={classes.big}>
+                <Carousel data={[largeBanner[3]]} />
             </div>
             <div className={classes.small}>
                 <Image src={smallBanner[1].imageUrl} alt="photo" fill />
@@ -26,7 +26,7 @@ async function AnnouncementsGrid() {
             </div>
             <div className={classes.small}>
                 <Image src={smallBanner[3].imageUrl} alt="photo" fill />
-            </div>
+            </div> */}
         </div>
     )
 }
