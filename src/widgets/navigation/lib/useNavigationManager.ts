@@ -1,7 +1,8 @@
 import { createContext, use, useLayoutEffect } from "react";
 import { Segments } from "../config/navigationConfig";
-import { usePathname } from "next/navigation";
 import { Segment } from "next/dist/server/app-render/types";
+import { NavigationManagerContext } from "../ui/NavigationManager";
+import { usePathname } from "next/navigation";
 
 export type NavPanelState = {
   readonly segment: Segments;
@@ -9,13 +10,13 @@ export type NavPanelState = {
   isActive: boolean;
 };
 
-export type NavigationManagerContext = {
-  navPanelsState: NavPanelState[] | [];
-  setNavPanelsState: React.Dispatch<React.SetStateAction<NavPanelState[] | []>>;
-};
+// export type NavigationManagerContext = {
+//   navPanelsState: NavPanelState[] | [];
+//   setNavPanelsState: React.Dispatch<React.SetStateAction<NavPanelState[] | []>>;
+// };
 
-export const NavigationManagerContext =
-  createContext<NavigationManagerContext | null>(null);
+// export const NavigationManagerContext =
+//   createContext<NavigationManagerContext | null>(null);
 
 export function useNavigationManager() {
 
@@ -27,31 +28,35 @@ export function useNavigationManager() {
     );
   }
 
-  const { navPanelsState, setNavPanelsState } = context;
+  const { panels, setPanels } = context;
+
+  const pathname = usePathname()
+
+
+  const setActivePanel = (segment: Segment) => {
+    setPanels((s) => {
+      return s.map((s) => handleUpdateActivePanel(segment, s));
+    });
+  };
 
   const openClosePanel = (segment: Segments) => {
-    setNavPanelsState((panel) =>
+    setPanels((panel) =>
       panel.map((item) => handleOpenClosePanelState(segment, item))
     );
   };
 
-  const setActivePanel = (segment: Segment) => {
-    setNavPanelsState(s => {
-      return s.map((s) => handleUpdateActivePanel(segment, s));
-    })
-  }
 
   const panelIsOpen = (segment: Segments) => {
-    return navPanelsState.find((s) => s.segment === segment)?.isOpen || false;
+    return panels.find((s) => s.segment === segment)?.isOpen || false;
   };
 
   const panelIsActive = (segment: Segment) => {
-    return navPanelsState.find((s) => s.segment === segment)?.isActive || false;
+    return panels.find((s) => s.segment === segment)?.isActive || false;
   }
 
   const initialNewPanel = (segment: Segments) => {
-    if (isExistSegment(segment, navPanelsState)) return;
-    setNavPanelsState((s) => [...s, { segment, isOpen: false, isActive: false }]);
+    if (isExistSegment(segment, panels)) return;
+    setPanels((s) => [...s, { segment, isOpen: false, isActive: false }]);
   };
 
   return {

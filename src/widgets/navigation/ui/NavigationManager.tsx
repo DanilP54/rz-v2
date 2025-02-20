@@ -1,10 +1,9 @@
 "use client";
-import React, { useLayoutEffect } from "react";
+import React, { createContext, SetStateAction, useLayoutEffect } from "react";
 import { Flex, Stack, UnstyledButton } from "@mantine/core";
 import { ReactNode, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
-  NavigationManagerContext,
   NavPanelState,
   useNavigationManager,
 } from "../lib/useNavigationManager";
@@ -13,12 +12,26 @@ import Link from "next/link";
 import classes from "./navogationManager.module.css";
 import clsx from "clsx";
 import type { NavigationPanel, Segments } from "../config/navigationConfig";
+import path from "path";
 
-export function NavigationManager({ children }: { children: ReactNode }) {
-  const [navPanelsState, setNavPanelsState] = useState<NavPanelState[]>([]);
-  console.log(navPanelsState);
+// ---------------------------------------- //
+
+export type NavigationManagerContext = {
+  panels: NavPanelState[] | [];
+  setPanels: React.Dispatch<React.SetStateAction<NavPanelState[] | []>>;
+};
+
+export const NavigationManagerContext = createContext<NavigationManagerContext | null>(null);
+
+export function NavigationManager({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const [panels, setPanels] = useState<NavPanelState[]>([]);
+  console.log(panels)
   return (
-    <NavigationManagerContext value={{ navPanelsState, setNavPanelsState }}>
+    <NavigationManagerContext value={{ panels, setPanels }}>
       <Stack h={"min-content"} gap={0}>
         {children}
       </Stack>
@@ -30,15 +43,22 @@ export function NavigationManager({ children }: { children: ReactNode }) {
 
 function InitialPanel({ panel }: { panel: NavigationPanel }) {
 
-  const { initialNewPanel, panelIsActive } = useNavigationManager();
+  const { initialNewPanel, panelIsActive, setActivePanel } = useNavigationManager();
 
-  const pathname = usePathname();
 
-  const { setActivePanel } = useNavigationManager();
+  const pathname = usePathname()
 
   useLayoutEffect(() => {
     initialNewPanel(panel.segment);
   }, [panel.segment]);
+
+  useLayoutEffect(() => {
+    panel.menuItems.map((link) => {
+      if(pathname?.includes(link.path)) {
+        setActivePanel(panel.segment)
+      }
+    })
+  }, [pathname])
 
   return (
     <Toggle
@@ -47,13 +67,11 @@ function InitialPanel({ panel }: { panel: NavigationPanel }) {
     >
       {panel.menuItems.map((link) => (
         <Links
+          label={link.label}
           key={link.label}
           path={link.path}
-          isActive={panelIsActive(panel.segment)}
-          segment={panel.segment}
-        >
-          {link.label}
-        </Links>
+          isActive={pathname?.includes(link.path) || false}
+        />
       ))}
     </Toggle>
   );
@@ -70,7 +88,6 @@ function Toggle({
   segment: Segments;
   panelIsActive: boolean;
 }) {
-
   const { isOpen, toggle } = useToggle(segment);
 
   return (
@@ -92,12 +109,12 @@ function Toggle({
 // LINKS ---------------------------------------------------------------
 
 function Links({
-  children,
+  label,
   path,
   isActive,
 }: {
   isActive: boolean;
-  children: ReactNode;
+  label: string;
   path: string;
 }) {
   return (
@@ -105,7 +122,7 @@ function Links({
       className={clsx(classes.link, { [classes.active]: isActive })}
       href={path}
     >
-      {children}
+      {label}
     </Link>
   );
 }
