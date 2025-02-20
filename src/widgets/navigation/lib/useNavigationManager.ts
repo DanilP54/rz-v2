@@ -10,13 +10,6 @@ export type NavPanelState = {
   isActive: boolean;
 };
 
-// export type NavigationManagerContext = {
-//   navPanelsState: NavPanelState[] | [];
-//   setNavPanelsState: React.Dispatch<React.SetStateAction<NavPanelState[] | []>>;
-// };
-
-// export const NavigationManagerContext =
-//   createContext<NavigationManagerContext | null>(null);
 
 export function useNavigationManager() {
 
