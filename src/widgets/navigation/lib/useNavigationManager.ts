@@ -1,15 +1,13 @@
-import { createContext, use, useLayoutEffect } from "react";
+import {  use } from "react";
 import { Segments } from "../config/navigationConfig";
 import { Segment } from "next/dist/server/app-render/types";
 import { NavigationManagerContext } from "../ui/NavigationManager";
-import { usePathname } from "next/navigation";
 
 export type NavPanelState = {
   readonly segment: Segments;
   isOpen: boolean;
   isActive: boolean;
 };
-
 
 export function useNavigationManager() {
 
@@ -23,9 +21,6 @@ export function useNavigationManager() {
 
   const { panels, setPanels } = context;
 
-  const pathname = usePathname()
-
-
   const setActivePanel = (segment: Segment) => {
     setPanels((s) => {
       return s.map((s) => handleUpdateActivePanel(segment, s));
@@ -37,7 +32,6 @@ export function useNavigationManager() {
       panel.map((item) => handleOpenClosePanelState(segment, item))
     );
   };
-
 
   const panelIsOpen = (segment: Segments) => {
     return panels.find((s) => s.segment === segment)?.isOpen || false;
@@ -73,18 +67,18 @@ function handleOpenClosePanelState(segment: Segments, item: NavPanelState) {
   return item;
 }
 
-function handleUpdateActivePanel(segment: Segments, item: NavPanelState) {
-  if (segment === item.segment) {
+function handleUpdateActivePanel(path: string, item: NavPanelState) {
+  if (path.includes(item.segment)) {
     return { ...item, isOpen: true, isActive: true };
   }
 
-  if (segment !== item.segment) {
+  if (!path.includes(item.segment)) {
     return { ...item, isOpen: false, isActive: false };
   }
 
   return item;
 }
 
-function isExistSegment(segment: Segments, state: NavPanelState[]) {
+export function isExistSegment(segment: Segments, state: NavPanelState[]) {
   return state.some((panel) => panel.segment === segment);
 }

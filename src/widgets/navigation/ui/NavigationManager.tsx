@@ -1,138 +1,168 @@
 "use client";
-import React, { createContext, SetStateAction, useLayoutEffect } from "react";
-import { Flex, Stack, UnstyledButton } from "@mantine/core";
-import { ReactNode, useState } from "react";
-import { usePathname } from "next/navigation";
+import React, {createContext, useEffect, useLayoutEffect} from "react";
+import {Flex, Stack, UnstyledButton} from "@mantine/core";
+import {ReactNode, useState} from "react";
+import {usePathname} from "next/navigation";
 import {
-  NavPanelState,
-  useNavigationManager,
+    useNavigationManager,
 } from "../lib/useNavigationManager";
-import { useToggle } from "../lib/useToggle";
+import {useToggle} from "../lib/useToggle";
 import Link from "next/link";
 import classes from "./navogationManager.module.css";
 import clsx from "clsx";
-import type { NavigationPanel, Segments } from "../config/navigationConfig";
-import path from "path";
+import {NavigationPanel, navigationPanels, Segments} from "../config/navigationConfig";
 
-// ---------------------------------------- //
+
+export interface NavPanelState extends NavigationPanel {
+    readonly segment: Segments;
+    isOpen: boolean;
+    isActive: boolean;
+};
 
 export type NavigationManagerContext = {
-  panels: NavPanelState[] | [];
-  setPanels: React.Dispatch<React.SetStateAction<NavPanelState[] | []>>;
+    panels: NavPanelState[];
+    setPanels: React.Dispatch<React.SetStateAction<NavPanelState[]>>;
 };
 
 export const NavigationManagerContext = createContext<NavigationManagerContext | null>(null);
 
-export function NavigationManager({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  const [panels, setPanels] = useState<NavPanelState[]>([]);
-  console.log(panels)
-  return (
-    <NavigationManagerContext value={{ panels, setPanels }}>
-      <Stack h={"min-content"} gap={0}>
-        {children}
-      </Stack>
-    </NavigationManagerContext>
-  );
+
+const createInitialState = (pathname: string | null, config: NavigationPanel[]) => {
+    return config.map(panel => ({
+        ...panel,
+        isActive: pathname?.includes(panel.segment) || false,
+        isOpen: pathname?.includes(panel.segment) || false
+
+    }))
 }
 
-// INITITAL_PANEL ---------------------------------------------------------------
+export function NavigationManager({children, initialPanels}: {
+    children: ReactNode;
+    initialPanels: NavigationPanel[];
+}) {
 
-function InitialPanel({ panel }: { panel: NavigationPanel }) {
+    const pathname = usePathname()
 
-  const { initialNewPanel, panelIsActive, setActivePanel } = useNavigationManager();
+    const [panels, setPanels] = useState<NavPanelState[]>(() => createInitialState(pathname, initialPanels))
 
+    console.log(panels)
 
-  const pathname = usePathname()
+    // useEffect(() => {
+    //     if (!pathname) return
+    //     setPanels((panel) => {
+    //         return panel.map(p => {
+    //             if (pathname.includes(p.segment)) {
+    //                 return {...p, isActive: true, isOpen: true}
+    //             }
+    //             return {...p, isActive: false, isOpen: false}
+    //         })
+    //     })
+    // }, [pathname]);
 
-  useLayoutEffect(() => {
-    initialNewPanel(panel.segment);
-  }, [panel.segment]);
-
-  useLayoutEffect(() => {
-    panel.menuItems.map((link) => {
-      if(pathname?.includes(link.path)) {
-        setActivePanel(panel.segment)
-      }
-    })
-  }, [pathname])
-
-  return (
-    <Toggle
-      segment={panel.segment}
-      panelIsActive={panelIsActive(panel.segment)}
-    >
-      {panel.menuItems.map((link) => (
-        <Links
-          label={link.label}
-          key={link.label}
-          path={link.path}
-          isActive={pathname?.includes(link.path) || false}
-        />
-      ))}
-    </Toggle>
-  );
+    return (
+        <NavigationManagerContext value={{panels, setPanels}}>
+            <Stack h={"min-content"} gap={0}>
+                {children}
+            </Stack>
+        </NavigationManagerContext>
+    );
 }
 
-// TOGGLE ---------------------------------------------------------------
+// function InitialPanel({panel}: { panel: NavigationPanel }) {
+//
+//     const {initialNewPanel, panelIsActive, setActivePanel} = useNavigationManager();
+//
+//
+//     const pathname = usePathname()
+//
+//     useLayoutEffect(() => {
+//         initialNewPanel(panel.segment);
+//     }, [panel.segment]);
+//
+//     useLayoutEffect(() => {
+//         panel.menuItems.map((link) => {
+//             if (pathname?.includes(link.path)) {
+//                 setActivePanel(panel.segment)
+//             }
+//         })
+//     }, [pathname])
+//
+//     return (
+//         <Toggle
+//             segment={panel.segment}
+//             panelIsActive={panelIsActive(panel.segment)}
+//         >
+//             {panel.menuItems.map((link) => (
+//                 <Links
+//                     label={link.label}
+//                     key={link.label}
+//                     path={link.path}
+//                     isActive={pathname?.includes(link.path) || false}
+//                 />
+//             ))}
+//         </Toggle>
+//     );
+// }
 
-function Toggle({
-  children,
-  segment,
-  panelIsActive,
-}: {
-  children: ReactNode;
-  segment: Segments;
-  panelIsActive: boolean;
+
+function Toggle({children, segment}: {
+    children: ReactNode;
+    segment: Segments;
 }) {
-  const { isOpen, toggle } = useToggle(segment);
 
-  return (
-    <Flex style={{ order: panelIsActive ? "1" : "0" }}>
-      <UnstyledButton
-        role="navigation"
-        className={clsx(classes.toggle, classes[segment])}
-        onClick={toggle}
-      ></UnstyledButton>
-      {isOpen && (
-        <Flex className={clsx(classes.panel, classes[segment])} component="nav">
-          {children}
+    const pathname = usePathname()
+
+    const {isOpen, toggle} = useToggle(segment);
+
+    const isActivePanel = pathname?.includes(segment) || false;
+
+
+    return (
+        <Flex style={{order: isActivePanel ? "1" : "0"}}>
+            <UnstyledButton
+                role="navigation"
+                className={clsx(classes.toggle, classes[segment])}
+                onClick={toggle}
+            ></UnstyledButton>
+            {isOpen && (
+                <Flex className={clsx(classes.panel, classes[segment])} component="nav">
+                    {children}
+                </Flex>
+            )}
         </Flex>
-      )}
-    </Flex>
-  );
+    );
 }
 
-// LINKS ---------------------------------------------------------------
-
-function Links({
-  label,
-  path,
-  isActive,
-}: {
-  isActive: boolean;
-  label: string;
-  path: string;
+function Links({label, path}: {
+    label: string;
+    path: string;
 }) {
-  return (
-    <Link
-      className={clsx(classes.link, { [classes.active]: isActive })}
-      href={path}
-    >
-      {label}
-    </Link>
-  );
+
+    const {setActivePanel} = useNavigationManager()
+
+    const pathname = usePathname()
+
+    const isActiveLink = pathname?.includes(path) || false
+
+    useEffect(() => {
+        if (!isActiveLink) return
+        setActivePanel(path)
+    }, [pathname]);
+
+    return (
+        <Link
+            className={clsx(classes.link, {[classes.active]: isActiveLink})}
+            href={path}>
+            {label}
+        </Link>
+    );
 }
 
-// SET NAMESPACE
 
-InitialPanel.displayName = "NavigationManager.InitialPanel";
+// InitialPanel.displayName = "NavigationManager.InitialPanel";
 Links.displayName = "NavigationManager.Links";
 Toggle.displayName = "NavigationManager.Toggle";
 
 NavigationManager.Toggle = Toggle;
 NavigationManager.Links = Links;
-NavigationManager.InitialPanel = InitialPanel;
+// NavigationManager.InitialPanel = InitialPanel;
