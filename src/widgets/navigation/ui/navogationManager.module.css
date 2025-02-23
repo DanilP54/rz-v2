@@ -1,5 +1,5 @@
-/* todo: 
-    сделать расчёт ширини исходя из padding header и width logo, 
+/* todo:
+    сделать расчёт ширини исходя из padding header и width logo,
     чтобы кнопка была по ширине ровно на границе логотипа
 */
 
@@ -20,9 +20,10 @@
     background-color: var(--balance-button-bg-color);
 }
 
+
 .panel {
     flex: 1 1 0;
-    gap: 100px; 
+    gap: 100px;
     align-items: center;
     padding: 0 0 0 100px;
 }
@@ -30,9 +31,11 @@
 .panel.instincts {
     background-color: var(--instincts-button-bg-color);
 }
+
 .panel.intellect {
     background-color: var(--intellect-button-bg-color);
 }
+
 .panel.balance {
     background-color: var(--balance-button-bg-color);
 }

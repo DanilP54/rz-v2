@@ -3,14 +3,14 @@ import { useNavigationManager } from "./useNavigationManager";
 
 export const useToggle = (segment: Segments) => {
   
-  const { openClosePanel, panelIsOpen } = useNavigationManager();
+  const { togglePanelVisibility, isPanelOpen } = useNavigationManager();
 
   const toggle = () => {
-    openClosePanel(segment);
+    togglePanelVisibility(segment);
   };
 
   return {
     toggle,
-    isOpen: panelIsOpen(segment),
+    isOpen: isPanelOpen(segment),
   };
 };
