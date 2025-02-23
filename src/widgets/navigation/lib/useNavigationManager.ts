@@ -1,4 +1,4 @@
-import { use, useEffect } from "react";
+import { use } from "react";
 import { Segments } from "../config";
 import { Segment } from "next/dist/server/app-render/types";
 import {
