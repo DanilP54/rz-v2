@@ -11,7 +11,7 @@ export async function RzLayout({ children }: { children: ReactNode }) {
         <AppHeader notification={true} />
         <Navigation />
       </ClientComponent>
-      {children}
+      {/* {children} */}
     </Flex>
   );
 }
