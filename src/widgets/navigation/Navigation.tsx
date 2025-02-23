@@ -1,13 +1,13 @@
 "use client";
-import { navigationPanels } from "./config/navigationConfig";
+import { navigationPanelsConfig } from "./config";
 import { NavigationManager } from "./ui/NavigationManager";
 
 export const Navigation = () => {
   return (
     <>
-      <NavigationManager configuration={navigationPanels}>
+      <NavigationManager configuration={navigationPanelsConfig}>
         {
-          navigationPanels.map(panel => (
+          navigationPanelsConfig.map(panel => (
             <NavigationManager.Panel key={panel.segment} panel={panel} />
           ))
         }
