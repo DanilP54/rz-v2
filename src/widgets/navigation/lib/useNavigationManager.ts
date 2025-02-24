@@ -2,16 +2,8 @@ import { use } from "react";
 import { Segments } from "../config";
 import { Segment } from "next/dist/server/app-render/types";
 import {
-  NavigationManagerContext,
+  NavigationManagerContext, NavPanelState,
 } from "../ui/NavigationManager";
-import {togglePanelOpenState, updatePanelActiveState} from "@/widgets/navigation/lib/index";
-
-
-// export type NavPanelState = {
-//   readonly segment: Segments;
-//   isOpen: boolean;
-//   isActive: boolean;
-// };
 
 export function useNavigationManager(segment: Segment) {
   const context = use(NavigationManagerContext);
@@ -22,12 +14,12 @@ export function useNavigationManager(segment: Segment) {
     );
   }
 
-  const {panels, setPanels} = context
+  const { panels, setPanels } = context
 
   const togglePanelVisibility = (segment: Segments) => {
     return () => {
       setPanels((panels) =>
-          panels.map((panel) => togglePanelOpenState(segment, panel))
+        panels.map((panel) => togglePanelOpenState(segment, panel))
       );
     };
   };
@@ -39,7 +31,7 @@ export function useNavigationManager(segment: Segment) {
   const activatePanel = (segment: Segment) => {
     return () => {
       setPanels((panels) =>
-          panels.map((panel) => updatePanelActiveState(segment, panel))
+        panels.map((panel) => updatePanelActiveState(segment, panel))
       );
     };
   };
@@ -47,6 +39,7 @@ export function useNavigationManager(segment: Segment) {
   const isPanelActive = (segment: Segment) => {
     return panels.find((panel) => panel.segment === segment)?.isActive || false;
   };
+
   return {
     panelIsOpen: isPanelOpen(segment),
     panelIsActive: isPanelActive(segment),
@@ -56,3 +49,39 @@ export function useNavigationManager(segment: Segment) {
 
 }
 
+
+function togglePanelOpenState(
+  targetSegment: Segments,
+  panel: NavPanelState
+) {
+  const { isOpen, isActive, segment } = panel;
+
+  const isTargetSegment = segment === targetSegment;
+
+  if (!isTargetSegment && isOpen && !isActive) {
+    return { ...panel, isOpen: false };
+  }
+
+  if (isTargetSegment && !isActive) {
+    return { ...panel, isOpen: !isOpen };
+  }
+
+  return panel;
+}
+
+function updatePanelActiveState(
+  targetSegment: Segments,
+  panel: NavPanelState
+) {
+  const { segment } = panel;
+
+  if (targetSegment !== segment) {
+    return { ...panel, isOpen: false, isActive: false };
+  }
+
+  if (targetSegment === segment) {
+    return { ...panel, isOpen: true, isActive: true };
+  }
+
+  return panel;
+}

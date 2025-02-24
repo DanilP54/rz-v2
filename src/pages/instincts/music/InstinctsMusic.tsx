@@ -2,9 +2,10 @@ import { TopBar } from "@/shared/ui/top-bar/TopBar";
 import { Filter } from "./ui/Filter";
 import { SearchBar } from "./ui/SearchBar";
 
+
 export default async function InstinctsMusicPage() {
 
-  // await fetch('https://fakestoreapi.in/api/products');
+  await fetch('https://fakestoreapi.in/api/products');
 
 
   return (

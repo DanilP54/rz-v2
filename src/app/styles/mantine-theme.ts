@@ -7,6 +7,7 @@ import {
   darken,
   UnstyledButton,
 } from "@mantine/core";
+
 import { usePathname } from "next/navigation";
 
 export const theme = createTheme({
@@ -65,10 +66,10 @@ export const resolver: CSSVariablesResolver = (theme) => {
 
   return {
     dark: {
-      "--mantine-color-body": feedPage ? feedBgColorDark : primaryBgColorDark,
+      // "--mantine-color-body": feedPage ? feedBgColorDark : primaryBgColorDark,
     },
     light: {
-      "--mantine-color-body": feedPage ? feedBgColorLight : primaryBgColorLight,
+      // "--mantine-color-body": feedPage ? feedBgColorLight : primaryBgColorLight,
     },
     variables: {
       "--instincts-button-bg-color": "hsl(0, 73%, 64%)",

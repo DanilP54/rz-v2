@@ -12,7 +12,7 @@ type LayoutProps = {
   langSwitchLinks?: ReactNode;
   globalSearch?: ReactNode;
   authLinks?: ReactNode;
-  notification?: boolean;
+  notification?: ReactNode;
 };
 
 export const Layout = ({
@@ -25,11 +25,9 @@ export const Layout = ({
   return (
     <Flex component="header" align={"start"} justify={"space-between"} p={20}>
       <Logo size="sm" link />
-      {notification && (
-        <div style={{ flex: "1 1 0", paddingLeft: "100px" }}>
-            <IconBubbleFilled />
-        </div>
-      )}
+      <div style={{ flex: "1 1 0", paddingLeft: "100px" }}>
+        {notification}
+      </div>
       <Flex align={"center"} gap={70}>
         {/* <div> */}
         {themeToggle}

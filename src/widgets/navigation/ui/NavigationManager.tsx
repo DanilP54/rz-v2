@@ -10,7 +10,7 @@ import Link from "next/link";
 import classes from "./navogationManager.module.css";
 import clsx from "clsx";
 import { NavigationPanel, Segments } from "../config";
-import {containsSubstring} from "@/widgets/navigation/lib";
+import { containsSubstring } from "@/widgets/navigation/lib/utils";
 
 export type NavPanelState = {
   readonly segment: Segments;
@@ -67,10 +67,10 @@ function Panel({ panel }: { panel: NavigationPanel }) {
     activatePanel,
   } = useNavigationManager(panel.segment);
 
-  const pathname  = usePathname()
+  const pathname = usePathname()
 
   useEffect(() => {
-    if(!containsSubstring(pathname, panel.segment)) return
+    if (!containsSubstring(pathname, panel.segment)) return
     activatePanel()
   }, [pathname]);
 

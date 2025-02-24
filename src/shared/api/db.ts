@@ -31,19 +31,22 @@ const adaptAnnouncementDTO = (dto: AnnouncementDTO): Announcement => {
 
 export const getAllAnnouncements = async () => {
   try {
-    // const { documents } = await db.listDocuments<AnnouncementDTO>(
-      // "678635aa003331b77290",
-      // "678635b500115e828378",
-      // []
-    // );
+    const { documents } = await db.listDocuments<AnnouncementDTO>(
+      "678635aa003331b77290",
+      "678635b500115e828378",
+      []
+    );
 
-    // if (!documents) {
-    //   throw new Error("Announcements not found");
-    // }
+    if (!documents) {
+      throw new Error("Announcements not found");
+    }
 
-    // return documents.map(adaptAnnouncementDTO);
-    return []
+    return documents.map(adaptAnnouncementDTO);
   } catch (error) {
-    throw new Error(`Error, ${error.message}`);
+    if (error instanceof Error) {
+      throw new Error(`Error, ${error.message}`);
+    }
+    throw new Error('unknow error from db.api')
   }
+
 };
