@@ -2,18 +2,18 @@
 import React, { createContext, useEffect } from "react";
 import { Flex, Stack, UnstyledButton } from "@mantine/core";
 import { ReactNode, useState } from "react";
-import { usePathname } from "next/navigation";
-import {
-  useNavigationManager,
-} from "../lib/useNavigationManager";
 import Link from "next/link";
 import classes from "./navogationManager.module.css";
 import clsx from "clsx";
 import { NavigationPanel, Segments } from "../config";
 import { containsSubstring } from "@/widgets/navigation/lib/utils";
+import { useInitialPanel } from "../lib/useInitialPanel";
+import { usePanelApi } from "../lib/usePanelApi";
+import { useActivatePanelControll } from "../lib/useActivatePanelControll";
 
 export type NavPanelState = {
   readonly segment: Segments;
+  readonly aboutRu: string;
   isOpen: boolean;
   isActive: boolean;
 }
@@ -26,30 +26,13 @@ export type NavigationManagerContext = {
 export const NavigationManagerContext =
   createContext<NavigationManagerContext | null>(null);
 
-const createInitialPanelsStates = (
-  currentPath: string | null,
-  configuration: NavigationPanel[]
-) => {
-  return configuration.map((panel) => ({
-    segment: panel.segment,
-    isActive: containsSubstring(currentPath, panel.segment),
-    isOpen: containsSubstring(currentPath, panel.segment),
-  }));
-};
-
 export function NavigationManager({
   children,
-  configuration,
 }: {
   children: ReactNode;
-  configuration: NavigationPanel[];
 }) {
 
-  const pathname = usePathname();
-
-  const [panels, setPanels] = useState<NavPanelState[]>(() =>
-    createInitialPanelsStates(pathname, configuration)
-  );
+  const [panels, setPanels] = useState<NavPanelState[]>([]);
 
   return (
     <NavigationManagerContext value={{ panels, setPanels }}>
@@ -61,31 +44,29 @@ export function NavigationManager({
 }
 
 function Panel({ panel }: { panel: NavigationPanel }) {
-  const {
-    openClosePanel,
-    panelIsOpen,
-    activatePanel,
-  } = useNavigationManager(panel.segment);
 
-  const pathname = usePathname()
+  const segment = useInitialPanel(panel)
+  const { isActive, isOpen, toggle, activate } = usePanelApi(segment);
+  const currentPath = useActivatePanelControll({
+    segment,
+    actionFn: activate
+  })
 
-  useEffect(() => {
-    if (!containsSubstring(pathname, panel.segment)) return
-    activatePanel()
-  }, [pathname]);
 
   return (
     <>
       <Toggle
-        segment={panel.segment}
-        openClosePanelFn={openClosePanel}
-        panelIsOpen={panelIsOpen}
+        segment={segment}
+        toggleFn={toggle}
+        panelIsOpen={isOpen}
+        panelIsActive={isActive}
       >
         {panel.menuItems.map((link) => (
           <NavLink
             key={link.label}
             label={link.label}
             path={link.path}
+            isActive={containsSubstring(currentPath, link.path)}
           />
         ))}
       </Toggle>
@@ -93,28 +74,29 @@ function Panel({ panel }: { panel: NavigationPanel }) {
   );
 }
 
+
+type ToggleProps = {
+  children: ReactNode;
+  panelIsOpen: boolean;
+  panelIsActive: boolean;
+  segment: Segments;
+  toggleFn: () => void;
+}
+
 function Toggle({
   children,
   segment,
+  panelIsActive,
   panelIsOpen,
-  openClosePanelFn,
-}: {
-  children: ReactNode;
-  panelIsOpen: boolean;
-  segment: Segments;
-  openClosePanelFn: () => void;
-}) {
-
-  const pathname = usePathname();
-
-  const isActivePanel = containsSubstring(pathname, segment)
+  toggleFn,
+}: ToggleProps) {
 
   const toggle = () => {
-    openClosePanelFn();
+    toggleFn();
   };
 
   return (
-    <Flex style={{ order: isActivePanel ? "1" : "0" }}>
+    <Flex style={{ order: panelIsActive ? "1" : "0" }}>
       <UnstyledButton
         role="navigation"
         className={clsx(classes.toggle, classes[segment])}
@@ -129,21 +111,21 @@ function Toggle({
   );
 }
 
+type NavLinkProps = {
+  label: string;
+  path: string;
+  isActive: boolean;
+}
+
 function NavLink({
   label,
   path,
-}: {
-  label: string;
-  path: string;
-}) {
-
-  const pathname = usePathname()
-
-  const isActiveNavLink = containsSubstring(pathname, path);
+  isActive,
+}: NavLinkProps) {
 
   return (
     <Link
-      className={clsx(classes.link, { [classes.active]: isActiveNavLink })}
+      className={clsx(classes.link, { [classes.active]: isActive })}
       href={path}
     >
       {label}

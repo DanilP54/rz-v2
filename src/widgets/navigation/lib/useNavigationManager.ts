@@ -1,11 +1,11 @@
-import { use } from "react";
-import { Segments } from "../config";
-import { Segment } from "next/dist/server/app-render/types";
+import { SetStateAction, use } from "react";
+import { NavigationPanel, Segments } from "../config";
 import {
-  NavigationManagerContext, NavPanelState,
+  NavigationManagerContext,
+  NavPanelState,
 } from "../ui/NavigationManager";
 
-export function useNavigationManager(segment: Segment) {
+export function useNavigationManager() {
   const context = use(NavigationManagerContext);
 
   if (!context) {
@@ -14,74 +14,43 @@ export function useNavigationManager(segment: Segment) {
     );
   }
 
-  const { panels, setPanels } = context
+  const { panels, setPanels } = context;
 
-  const togglePanelVisibility = (segment: Segments) => {
-    return () => {
-      setPanels((panels) =>
-        panels.map((panel) => togglePanelOpenState(segment, panel))
-      );
-    };
-  };
 
-  const isPanelOpen = (segment: Segments) => {
-    return panels.find((panel) => panel.segment === segment)?.isOpen || false;
-  };
+  const getPanels = () => {
+    return panels
+  }
 
-  const activatePanel = (segment: Segment) => {
-    return () => {
-      setPanels((panels) =>
-        panels.map((panel) => updatePanelActiveState(segment, panel))
-      );
-    };
-  };
+  const selectorPanel = (segment: Segments) => {
+    return panels.find(p => p.segment === segment)
+  }
 
-  const isPanelActive = (segment: Segment) => {
-    return panels.find((panel) => panel.segment === segment)?.isActive || false;
+  const updatePanels = (cb: SetStateAction<NavPanelState[]>) => {
+    setPanels(cb)
+  }
+
+  const initialPanel = (init: NavigationPanel, isActivePanel: boolean) => {
+
+    if (isExistPanel(init.segment, panels)) return;
+
+    const newPanel: NavPanelState = {
+      segment: init.segment,
+      isActive: isActivePanel,
+      isOpen: isActivePanel,
+      aboutRu: init.aboutRu
+    }
+
+    updatePanels((panel) => [...panel, newPanel]);
   };
 
   return {
-    panelIsOpen: isPanelOpen(segment),
-    panelIsActive: isPanelActive(segment),
-    openClosePanel: togglePanelVisibility(segment),
-    activatePanel: activatePanel(segment),
-  };
-
+    initialPanel,
+    updatePanels,
+    selectorPanel,
+    getPanels
+  }
 }
 
-
-function togglePanelOpenState(
-  targetSegment: Segments,
-  panel: NavPanelState
-) {
-  const { isOpen, isActive, segment } = panel;
-
-  const isTargetSegment = segment === targetSegment;
-
-  if (!isTargetSegment && isOpen && !isActive) {
-    return { ...panel, isOpen: false };
-  }
-
-  if (isTargetSegment && !isActive) {
-    return { ...panel, isOpen: !isOpen };
-  }
-
-  return panel;
-}
-
-function updatePanelActiveState(
-  targetSegment: Segments,
-  panel: NavPanelState
-) {
-  const { segment } = panel;
-
-  if (targetSegment !== segment) {
-    return { ...panel, isOpen: false, isActive: false };
-  }
-
-  if (targetSegment === segment) {
-    return { ...panel, isOpen: true, isActive: true };
-  }
-
-  return panel;
+function isExistPanel(segment: Segments, panels: NavPanelState[]) {
+  return panels.some((panel) => panel.segment === segment);
 }

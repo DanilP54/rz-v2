@@ -4,7 +4,7 @@ import { Filter } from "../music/ui/Filter";
 
 
 export default async function InstinctsMoviePage() {
-  await fetch("https://fakestoreapi.in/api/products");
+  // await fetch("https://fakestoreapi.in/api/products");
 
   return (
     <>

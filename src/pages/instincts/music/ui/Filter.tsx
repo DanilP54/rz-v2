@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-// import { Chip, Group } from "@mantine/core";
-// import classes from './filter.module.css';
-// import { IconCircle, IconX } from "@tabler/icons-react";
+import { Chip, ChipGroup, Flex } from "@mantine/core";
+
+import classes from './filter.module.css';
+import { IconX } from "@tabler/icons-react";
 
 export function Filter() {
   const [value, setValue] = useState<string | null>("");
@@ -13,29 +14,28 @@ export function Filter() {
     }
   };
 
-  return ( <></>
-    // <Chip.Group multiple={false}
-    //             value={value}
-    //             onChange={setValue}
-    // >
-    //   <Group>
-    //     {/*<Chip*/}
-    //     {/*  radius={"sm"}*/}
-    //     {/*  icon={<IconX size={18} />}*/}
-    //     {/*  value="first"*/}
-    //     {/*  onClick={handleChipClick}*/}
-    //     {/*>*/}
-    //     {/*  Коммерческое*/}
-    //     {/*</Chip>*/}
-    //     {/*<Chip*/}
-    //     {/*  radius={"sm"}*/}
-    //     {/*  icon={<IconX size={18} />}*/}
-    //     {/*  value="second"*/}
-    //     {/*  onClick={handleChipClick}*/}
-    //     {/*>*/}
-    //     {/*  Некоммерческое*/}
-    //     {/*</Chip>*/}
-    //   </Group>
-    // </Chip.Group>
+  return (<ChipGroup multiple={false}
+    value={value}
+    onChange={setValue}
+  >
+    <Flex align={'center'} gap={'md'}>
+      <Chip
+        radius={"sm"}
+        icon={<IconX size={18} />}
+        value="first"
+        onClick={handleChipClick}
+      >
+        Коммерческое
+      </Chip>
+      <Chip
+        radius={"sm"}
+        icon={<IconX size={18} />}
+        value="second"
+        onClick={handleChipClick}
+      >
+        Некоммерческое
+      </Chip >
+    </Flex>
+  </ChipGroup>
   );
 }
