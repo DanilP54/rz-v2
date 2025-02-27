@@ -1,5 +1,5 @@
 import type { Segments } from '../config/index';
-import { NavPanelState } from '../ui/NavigationManager';
+import { NavPanelState } from '../ui/NavigationProvider';
 import { useNavigationManager } from "./useNavigationManager"
 
 export function usePanelApi(segment: Segments) {

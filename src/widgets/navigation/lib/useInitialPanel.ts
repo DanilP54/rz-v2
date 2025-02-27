@@ -7,9 +7,10 @@ import { NavigationPanel } from "../config"
 
 
 export function useInitialPanel(panel: NavigationPanel) {
-  const { initialPanel } = useNavigationManager()
-  const pathname = usePathname()
 
+  const { initialPanel } = useNavigationManager()
+
+  const pathname = usePathname()
 
   useEffect(() => {
     initialPanel(panel, containsSubstring(pathname, panel.segment))

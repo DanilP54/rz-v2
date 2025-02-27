@@ -1,4 +1,3 @@
-"use client"
 import { ThemeToggle } from "@/features/theme-toggle";
 import { Layout } from "./ui/Layout";
 import { LangSwitchLinks } from "./ui/LangSwitchLinks";

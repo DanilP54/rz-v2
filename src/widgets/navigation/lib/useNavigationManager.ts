@@ -3,7 +3,7 @@ import { NavigationPanel, Segments } from "../config";
 import {
   NavigationManagerContext,
   NavPanelState,
-} from "../ui/NavigationManager";
+} from "../ui/NavigationProvider";
 
 export function useNavigationManager() {
   const context = use(NavigationManagerContext);

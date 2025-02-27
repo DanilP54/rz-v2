@@ -1,17 +1,19 @@
 "use client";
 import { navigationPanelsConfig } from "./config";
-import { NavigationManager } from "./ui/NavigationManager";
+import { NavigationTooltip } from "./ui/NavigationTooltip";
+import { Panel } from "./ui/NavigationProvider";
+import { Stack } from "@mantine/core";
 
 export const Navigation = () => {
   return (
     <>
-      <NavigationManager>
+      <Stack h={"min-content"} gap={0} mt={30}>
         {
           navigationPanelsConfig.map(panel => (
-            <NavigationManager.Panel key={panel.segment} panel={panel} />
+            <Panel key={panel.segment} panel={panel} />
           ))
         }
-      </NavigationManager>
+      </Stack>
     </>
   );
 };

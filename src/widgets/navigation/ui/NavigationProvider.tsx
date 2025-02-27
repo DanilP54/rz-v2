@@ -1,4 +1,5 @@
 "use client";
+
 import React, { createContext, useEffect } from "react";
 import { Flex, Stack, UnstyledButton } from "@mantine/core";
 import { ReactNode, useState } from "react";
@@ -26,7 +27,7 @@ export type NavigationManagerContext = {
 export const NavigationManagerContext =
   createContext<NavigationManagerContext | null>(null);
 
-export function NavigationManager({
+export function NavigationProvider({
   children,
 }: {
   children: ReactNode;
@@ -36,17 +37,20 @@ export function NavigationManager({
 
   return (
     <NavigationManagerContext value={{ panels, setPanels }}>
-      <Stack h={"min-content"} gap={0}>
-        {children}
-      </Stack>
+      {children}
     </NavigationManagerContext>
   );
 }
 
-function Panel({ panel }: { panel: NavigationPanel }) {
+
+
+
+export function Panel({ panel }: { panel: NavigationPanel }) {
 
   const segment = useInitialPanel(panel)
+
   const { isActive, isOpen, toggle, activate } = usePanelApi(segment);
+
   const currentPath = useActivatePanelControll({
     segment,
     actionFn: activate
@@ -61,14 +65,16 @@ function Panel({ panel }: { panel: NavigationPanel }) {
         panelIsOpen={isOpen}
         panelIsActive={isActive}
       >
-        {panel.menuItems.map((link) => (
-          <NavLink
-            key={link.label}
-            label={link.label}
-            path={link.path}
-            isActive={containsSubstring(currentPath, link.path)}
-          />
-        ))}
+        {
+          panel.menuItems.map((link) => (
+            <NavLink
+              key={link.label}
+              label={link.label}
+              path={link.path}
+              isActive={containsSubstring(currentPath, link.path)}
+            />
+          ))
+        }
       </Toggle>
     </>
   );
@@ -137,6 +143,6 @@ Panel.displayName = "NavigationManager.Panel";
 NavLink.displayName = "NavigationManager.NavLink";
 Toggle.displayName = "NavigationManager.Toggle";
 
-NavigationManager.Panel = Panel;
-NavigationManager.Toggle = Toggle;
-NavigationManager.Links = NavLink;
+NavigationProvider.Panel = Panel;
+NavigationProvider.Toggle = Toggle;
+NavigationProvider.Links = NavLink;
