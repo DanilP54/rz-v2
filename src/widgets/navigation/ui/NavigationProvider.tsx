@@ -1,10 +1,10 @@
 "use client";
 
-import React, { createContext, useEffect } from "react";
-import { Flex, Stack, UnstyledButton } from "@mantine/core";
+import React, { createContext } from "react";
+import { Flex, UnstyledButton } from "@mantine/core";
 import { ReactNode, useState } from "react";
 import Link from "next/link";
-import classes from "./navogationManager.module.css";
+import classes from "../navogation.module.css";
 import clsx from "clsx";
 import { NavigationPanel, Segments } from "../config";
 import { containsSubstring } from "@/widgets/navigation/lib/utils";

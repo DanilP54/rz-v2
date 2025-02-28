@@ -1,3 +1,6 @@
-export { Navigation } from "./Navigation";
-export { NavigationProvider } from './ui/NavigationProvider';
-export { NavigationTooltip } from './ui/NavigationTooltip';
+import { NavigationTooltip } from "./ui/NavigationTooltip";
+import { Navigation } from "./Navigation";
+import { NavigationProvider } from "./ui/NavigationProvider";
+
+
+export { Navigation, NavigationTooltip, NavigationProvider }

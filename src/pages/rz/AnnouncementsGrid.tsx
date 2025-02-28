@@ -13,20 +13,20 @@ async function AnnouncementsGrid() {
   return (
     <div className={classes.container}>
       {/* <div className={classes.big}>
-                <Carousel data={[largeBanner[3]]} />
-            </div>
-            <div className={classes.small}>
-                <Image src={smallBanner[1].imageUrl} alt="photo" fill />
-            </div>
-            <div className={classes.small}>
-                <Image src={smallBanner[0].imageUrl} alt="photo" fill />
-            </div>
-            <div className={classes.small}>
-                <Image src={smallBanner[2].imageUrl} alt="photo" fill />
-            </div>
-            <div className={classes.small}>
-                <Image src={smallBanner[3].imageUrl} alt="photo" fill />
-            </div> */}
+        <Carousel data={[largeBanner[3]]} />
+      </div>
+      <div className={classes.small}>
+        <Image src={smallBanner[1].imageUrl} alt="photo" fill />
+      </div>
+      <div className={classes.small}>
+        <Image src={smallBanner[0].imageUrl} alt="photo" fill />
+      </div>
+      <div className={classes.small}>
+        <Image src={smallBanner[2].imageUrl} alt="photo" fill />
+      </div>
+      <div className={classes.small}>
+        <Image src={smallBanner[3].imageUrl} alt="photo" fill />
+      </div> */}
     </div>
   )
 }

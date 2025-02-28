@@ -1,10 +1,5 @@
 import { Logo } from "@/shared/ui/logo/Logo";
 import { Flex } from "@mantine/core";
-import {
-  IconBubbleFilled,
-  IconFlower,
-  IconFlowerFilled,
-} from "@tabler/icons-react";
 import { ReactNode } from "react";
 
 type LayoutProps = {
@@ -12,7 +7,7 @@ type LayoutProps = {
   langSwitchLinks?: ReactNode;
   globalSearch?: ReactNode;
   authLinks?: ReactNode;
-  notification?: ReactNode;
+  navigationTooltipAction?: ReactNode;
 };
 
 export const Layout = ({
@@ -20,13 +15,13 @@ export const Layout = ({
   langSwitchLinks,
   globalSearch,
   authLinks,
-  notification,
+  navigationTooltipAction,
 }: LayoutProps) => {
   return (
     <Flex component="header" align={"start"} justify={"space-between"} p={20}>
       <Logo size="sm" link />
       <div style={{ flex: "1 1 0", paddingLeft: "100px" }}>
-        {notification}
+        {navigationTooltipAction}
       </div>
       <Flex align={"center"} gap={70}>
         {/* <div> */}

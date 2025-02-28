@@ -6,10 +6,10 @@ import { AuthLinks } from "@/shared/ui/auth-links/AuthLinks";
 import { SearchButton } from "@/shared/ui/search-button/SearchButton";
 import { ReactNode } from "react";
 
-export const AppHeader = ({ notification }: { notification?: ReactNode }) => {
+export const AppHeader = ({ navigationTooltipAction }: { navigationTooltipAction?: ReactNode }) => {
   return (
     <Layout
-      notification={notification}
+      navigationTooltipAction={navigationTooltipAction}
       themeToggle={<ThemeToggle />}
       langSwitchLinks={<LangSwitchLinks />}
       globalSearch={<SearchGlobal trigger={<SearchButton />} />}
