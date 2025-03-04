@@ -4,19 +4,22 @@ import { LangSwitchLinks } from "../app-header/ui/LangSwitchLinks";
 import { SearchGlobal } from "@/features/global-search/ui/SearchGlobal";
 import { SearchButton } from "@/shared/ui/search-button/SearchButton";
 import classes from './detailHeader.module.css';
+import { IconSearch } from "@tabler/icons-react";
+import { NavigationSegments } from "@/shared/types/Segments";
+import clsx from "clsx";
 
 type DetailHeaderProps = {
-  variant: string
+  segment: NavigationSegments
 }
 
-export const DetailHeader = ({ variant }: DetailHeaderProps) => {
+export const DetailsHeader = ({ segment }: DetailHeaderProps) => {
   return (
-    <>
+    <header className={clsx(classes.header, classes[segment])}>
       <Layout
         themeToggle={<ThemeToggle />}
         languageSwitcher={<LangSwitchLinks />}
         globalSearch={<SearchGlobal trigger={<SearchButton />} />}
       />
-    </>
+    </header>
   )
 };

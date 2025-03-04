@@ -6,26 +6,20 @@ type LayoutProps = {
   themeToggle?: ReactNode;
   languageSwitcher?: ReactNode;
   globalSearch?: ReactNode;
-  authButtons?: ReactNode;
 };
 
 export const Layout = ({
   themeToggle,
   languageSwitcher,
   globalSearch,
-  authButtons,
 }: LayoutProps) => {
   return (
-    <Flex component="header" align={"start"} justify={"space-between"} p={20}>
-      <Logo size="sm" link />
-      {/* <div style={{ flex: "1 1 0", paddingLeft: "100px" }}>
-        {navigationTooltipAction}
-      </div> */}
+    <Flex component="header" align={"center"} justify={"space-between"}>
+      <Logo size="xs" redirectOnClickTo="/rz" />
       <Flex align={"center"} gap={70}>
         {themeToggle}
         {languageSwitcher}
         {globalSearch}
-        {authButtons}
       </Flex>
     </Flex>
   )

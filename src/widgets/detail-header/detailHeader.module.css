@@ -1,0 +1,17 @@
+.header {
+    padding: 8px 300px;
+    color: white;
+}
+
+
+.header.instincts {
+    background-color: var(--instincts-button-bg-color);
+}
+
+.header.intellect {
+    background-color: var(--intellect-button-bg-color);
+}
+
+.header.balance {
+    background-color: var(--balance-button-bg-color);
+}

@@ -22,7 +22,7 @@ const FeedPage = () => {
           w={{ xl: 450, lg: 400, md: 380 }}
         >
           <Flex justify={"space-between"} align={"start"}>
-            <Logo size="sm" link />
+            <Logo size="sm" redirectOnClickTo="/" />
             <ThemeToggle />
           </Flex>
           <Stack component={"nav"} mt={20}>

@@ -20,23 +20,15 @@ export const Layout = ({
 }: LayoutProps) => {
   return (
     <Flex component="header" align={"start"} justify={"space-between"} p={20}>
-      <Logo size="sm" link />
+      <Logo size="sm" redirectOnClickTo="/" />
       <div style={{ flex: "1 1 0", paddingLeft: "100px" }}>
         {navigationTooltipAction}
       </div>
       <Flex align={"center"} gap={70}>
-        {/* <div> */}
         {themeToggle}
-        {/* </div> */}
-        {/* <div> */}
         {langSwitchLinks}
-        {/* </div> */}
-        {/* <div> */}
         {globalSearch}
-        {/* </div> */}
-        {/* <div> */}
         {authLinks}
-        {/* </div> */}
       </Flex>
     </Flex>
   );

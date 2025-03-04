@@ -2,19 +2,32 @@ import { Flex, Text, UnstyledButton } from "@mantine/core"
 import { IconSearch } from "@tabler/icons-react"
 import classes from "./searchButton.module.css";
 
+type Pages = 'feed' | 'radio' | 'details' | 'rz';
+
+
+
 type SearchButtonProps = {
-  width?: number,
+  page: Pages;
   feedPage?: true
   radioPage?: true
 }
 
-export const SearchButton = ({ width = 200, feedPage, radioPage }: SearchButtonProps) => {
+
+
+
+export const SearchButton = ({ feedPage, radioPage }: SearchButtonProps) => {
   return (
     <UnstyledButton
+      styles={{
+        root: {
+          // "--custom-text-color-search-button": "red",
+          // "--custom-bg-color-search-button": "blue"
+        }
+      }}
       feedpage={feedPage?.toString()}
       radiopage={radioPage?.toString()}
-      w={width}
-      className={classes.search_container}>
+      w={200}
+      className={classes.search_button}>
       <Flex
         align={'center'}
         gap={15}

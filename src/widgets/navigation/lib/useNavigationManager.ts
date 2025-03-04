@@ -1,9 +1,13 @@
 import { SetStateAction, use } from "react";
-import { NavigationPanel, Segments } from "../config";
+import { NavigationPanel } from "../config";
 import {
   NavigationManagerContext,
   NavPanelState,
 } from "../ui/NavigationProvider";
+import { NavigationSegments } from "@/shared/types/Segments";
+
+
+
 
 export function useNavigationManager() {
   const context = use(NavigationManagerContext);
@@ -21,7 +25,7 @@ export function useNavigationManager() {
     return panels
   }
 
-  const selectorPanel = (segment: Segments) => {
+  const selectorPanel = (segment: NavigationSegments) => {
     return panels.find(p => p.segment === segment)
   }
 
@@ -51,6 +55,6 @@ export function useNavigationManager() {
   }
 }
 
-function isExistPanel(segment: Segments, panels: NavPanelState[]) {
+function isExistPanel(segment: NavigationSegments, panels: NavPanelState[]) {
   return panels.some((panel) => panel.segment === segment);
 }

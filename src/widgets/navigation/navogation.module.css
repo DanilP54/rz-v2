@@ -82,6 +82,12 @@
 
 .trigger {
     cursor: pointer;
+    width: min-content;
+    transition: transform .2s;
+}
+
+.trigger:hover {
+    transform: rotate(-10deg);
 }
 
 .tooltip_title {

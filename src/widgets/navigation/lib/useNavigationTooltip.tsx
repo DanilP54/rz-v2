@@ -20,14 +20,14 @@ const DEFAULT_TEXT_TOOLTIP = 'Нажав на один из разноцветн
 
 export const useNavigationTooltip = (): NavigationTooltip => {
 
-  const { getPanels } = useNavigationManager();
 
   const [tooltipState, updateTooltipState] = useState<TooltipState>({
     segment: 'default',
     isVisible: false,
-    text: ''
+    text: DEFAULT_TEXT_TOOLTIP
   });
 
+  const { getPanels } = useNavigationManager();
   const panelThatIsActive = getPanels().find(panel => panel.isActive);
 
   const [storage, writeToStorage] = useLocalStorage<Storage[]>({
@@ -43,18 +43,17 @@ export const useNavigationTooltip = (): NavigationTooltip => {
 
   function handleDefaultTooltip() {
 
-    if (!alreadyTooltipBeenShown('default')) {
+    if (!alreadyTooltipBeenShown(storage, 'default')) {
       writeToStorage(prev => [...prev, 'default'])
-      updateTooltipState({
+      updateTooltipState((prevState) => ({
+        ...prevState,
         segment: 'default',
         isVisible: true,
-        text: DEFAULT_TEXT_TOOLTIP
-      })
+      }))
     } else {
       updateTooltipState(prevState => ({
         ...prevState,
         segment: 'default',
-        text: DEFAULT_TEXT_TOOLTIP
       }))
     }
   }
@@ -63,7 +62,7 @@ export const useNavigationTooltip = (): NavigationTooltip => {
 
     if (!panelThatIsActive) return
 
-    if (!alreadyTooltipBeenShown(panelThatIsActive.segment)) {
+    if (!alreadyTooltipBeenShown(storage, panelThatIsActive.segment)) {
       writeToStorage((prev) => [...prev, panelThatIsActive.segment])
       updateTooltipState({
         segment: panelThatIsActive.segment,
@@ -80,13 +79,13 @@ export const useNavigationTooltip = (): NavigationTooltip => {
     }
   }
 
-  function alreadyTooltipBeenShown(target: Storage) {
-    return storage.includes(target)
-  }
-
   return {
     ...tooltipState,
     show: () => updateTooltipState(prevState => ({ ...prevState, isVisible: true })),
     hide: () => updateTooltipState(prevState => ({ ...prevState, isVisible: false }))
   }
+}
+
+function alreadyTooltipBeenShown(storage: Storage[], target: Storage) {
+  return storage.includes(target)
 }

@@ -17,15 +17,15 @@ const width: Size = {
 
 export function Logo({
   size = "md",
-  link,
+  redirectOnClickTo,
 }: {
   size?: SizePoints;
-  link?: boolean;
+  redirectOnClickTo?: string;
 }) {
-  if (link) {
+  if (!!redirectOnClickTo) {
     return (
       <>
-        <Link href={'/'}>
+        <Link href={redirectOnClickTo}>
           <Image
             className={clsx(classes.logo, classes.dark)}
             src={"/logo/logo-dark.png"}

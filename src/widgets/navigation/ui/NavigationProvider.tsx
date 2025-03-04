@@ -6,14 +6,15 @@ import { ReactNode, useState } from "react";
 import Link from "next/link";
 import classes from "../navogation.module.css";
 import clsx from "clsx";
-import { NavigationPanel, Segments } from "../config";
+import { NavigationPanel } from "../config";
 import { containsSubstring } from "@/widgets/navigation/lib/utils";
 import { useInitialPanel } from "../lib/useInitialPanel";
 import { usePanelApi } from "../lib/usePanelApi";
 import { useActivatePanelControll } from "../lib/useActivatePanelControll";
+import { NavigationSegments } from "@/shared/types/Segments";
 
 export type NavPanelState = {
-  readonly segment: Segments;
+  readonly segment: NavigationSegments;
   readonly aboutRu: string;
   isOpen: boolean;
   isActive: boolean;
@@ -85,7 +86,7 @@ type ToggleProps = {
   children: ReactNode;
   panelIsOpen: boolean;
   panelIsActive: boolean;
-  segment: Segments;
+  segment: NavigationSegments;
   toggleFn: () => void;
 }
 
