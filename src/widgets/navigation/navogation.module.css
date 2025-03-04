@@ -5,7 +5,7 @@
 
 .toggle {
     width: 120px;
-    min-height: 37px;
+    min-height: 40px;
 }
 
 .toggle.instincts {
@@ -45,7 +45,7 @@
     padding: 1px 15px;
     color: white;
     font-weight: bold;
-    border-radius: 15px;
+    border-radius: 8px;
 
     @mixin hover {
         background-color: var(--mantine-color-dark-light-hover);
@@ -58,8 +58,6 @@
 }
 
 
-
-
 /* tooltip */
 
 .tooltip {
@@ -69,9 +67,9 @@
     justify-content: space-between;
     width: 40%;
     position: absolute;
-    top: -300px;
+    top: -500px;
     left: 200px;
-    transition: top .3s ease;
+    transition: top .2s ease;
     border: 4px solid #333;
     padding: 5px 10px;
     background-color: #222;
@@ -96,7 +94,31 @@
 .button_close {
     display: flex;
     alignItems: center;
+    justify-content: center;
     cursor: pointer;
     textAlign: right;
     color: white;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+
+.button_close:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.trigger_icon.default {
+    color: inherit;
+}
+
+.trigger_icon.instincts {
+    color: var(--instincts-button-bg-color);
+}
+
+.trigger_icon.intellect {
+    color: var(--intellect-button-bg-color);
+}
+
+.trigger_icon.balance {
+    color: var(--balance-button-bg-color);
 }

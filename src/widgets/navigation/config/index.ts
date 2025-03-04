@@ -1,8 +1,10 @@
+import { NavigationSegments } from "@/shared/types/Segments";
+
 const BASE_INSTINCTS_PATH = "/rz/instincts";
 const BASE_INTELLECT_PATH = "/rz/intellect";
 const BASE_BALANCE_PATH = "/rz/balance";
 
-export type Segments = "instincts" | "intellect" | "balance";
+// export type Segments = "instincts" | "intellect" | "balance";
 
 type MenuItems = {
   label: string,
@@ -10,7 +12,7 @@ type MenuItems = {
 }
 
 export type NavigationPanel = {
-  segment: Segments;
+  segment: NavigationSegments;
   aboutRu: string;
   menuItems: MenuItems[];
 };

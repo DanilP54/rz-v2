@@ -28,7 +28,7 @@ export const theme = createTheme({
     Chip: Chip.extend({
       styles: (theme) => ({
         label: {
-          backgroundColor: theme.colors.red[3],
+          backgroundColor: theme.colors.gray[3],
           border: "none",
           color: "black",
           fontWeight: "700",

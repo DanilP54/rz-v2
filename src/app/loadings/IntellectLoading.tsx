@@ -1,16 +1,16 @@
-import { CardListSkeleton } from "@/pages/instincts/music/ui/CardListSkeleton";
-import { FilterTogglesSkeleton } from "@/pages/instincts/music/ui/FilterTogglesSkeleton";
-import { SearchBarSkeleton } from "@/pages/instincts/music/ui/SearchBarSkeleton";
-import { TopBar } from "@/shared/ui/top-bar/TopBar";
+import { CardListSkeleton } from "@/shared/ui/card-list-skeleton/CardListSkeleton";
+import { SearchBarSkeleton } from "@/shared/ui/search-bar-skeleton/SearchBarSkeleton";
+import { FiltersSkeleton } from "@/shared/ui/filters-skeleton/FiltersSkeleton";
+import { SearchAndFilters } from "@/widgets/search-and-filters/SearchAndFilters";
 
 
 export function IntellectLoading() {
   return (
     <div>
-      <TopBar
-        variant="intellect"
-        searchBar={<SearchBarSkeleton />}
-        filterToggles={<FilterTogglesSkeleton />}
+      <SearchAndFilters
+        segment="intellect"
+        search={<SearchBarSkeleton />}
+        filters={<FiltersSkeleton />}
       />
       <CardListSkeleton />
     </div>

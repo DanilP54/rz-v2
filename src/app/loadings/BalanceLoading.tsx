@@ -1,16 +1,16 @@
-import { CardListSkeleton } from "@/pages/instincts/music/ui/CardListSkeleton";
-import { FilterTogglesSkeleton } from "@/pages/instincts/music/ui/FilterTogglesSkeleton";
-import { SearchBarSkeleton } from "@/pages/instincts/music/ui/SearchBarSkeleton";
-import { TopBar } from "@/shared/ui/top-bar/TopBar";
+import { CardListSkeleton } from "@/shared/ui/card-list-skeleton/CardListSkeleton";
+import { FiltersSkeleton } from "@/shared/ui/filters-skeleton/FiltersSkeleton";
+import { SearchBarSkeleton } from "@/shared/ui/search-bar-skeleton/SearchBarSkeleton";
+import { SearchAndFilters } from "@/widgets/search-and-filters/SearchAndFilters";
 
 
 export function BalanceLoading() {
   return (
     <div>
-      <TopBar
-        variant="balance"
-        searchBar={<SearchBarSkeleton />}
-        filterToggles={<FilterTogglesSkeleton />}
+      <SearchAndFilters
+        segment="balance"
+        filters={<FiltersSkeleton />}
+        search={<SearchBarSkeleton />}
       />
       <CardListSkeleton />
     </div>

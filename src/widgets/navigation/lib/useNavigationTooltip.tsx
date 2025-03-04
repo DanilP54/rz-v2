@@ -1,18 +1,17 @@
 import { useLocalStorage } from "@mantine/hooks"
 import { useNavigationManager } from "./useNavigationManager"
-import { Segments } from "../config"
 import { useState, useEffect } from "react"
+import { NavigationSegments } from "@/shared/types/Segments"
 
-type Storage = Segments | 'default'
+type Storage = NavigationSegments | 'default'
 
 type TooltipState = {
+  segment: Storage
   text: string | undefined
   isVisible: boolean
 }
 
-interface NavigationTooltip {
-  text: string | undefined
-  isVisible: boolean
+interface NavigationTooltip extends TooltipState {
   show: () => any
   hide: () => void
 }
@@ -23,10 +22,11 @@ export const useNavigationTooltip = (): NavigationTooltip => {
 
   const { getPanels } = useNavigationManager();
 
-  const [tooltipState, setTooltipState] = useState<TooltipState>({
+  const [tooltipState, updateTooltipState] = useState<TooltipState>({
+    segment: 'default',
     isVisible: false,
     text: ''
-  })
+  });
 
   const panelThatIsActive = getPanels().find(panel => panel.isActive);
 
@@ -34,57 +34,59 @@ export const useNavigationTooltip = (): NavigationTooltip => {
     key: "navigationTooltipsThatWereShown",
     defaultValue: [],
     getInitialValueInEffect: false,
-  })
-
-
-  const alreadyTooltipBeenShown = (target: Storage) => {
-    return storage.includes(target)
-  }
-
-  const updateTooltipTextWithoutShowing = (text: string) => {
-    setTooltipState(prevState => ({
-      ...prevState,
-      text
-    }))
-  }
-
-  const updateTooltipTextAndShow = (text: string) => {
-    setTooltipState({
-      isVisible: true,
-      text
-    })
-  }
-
-  const handleDefaultTooltip = () => {
-    if (!alreadyTooltipBeenShown('default')) {
-      writeToStorage(prev => [...prev, 'default'])
-      updateTooltipTextAndShow(DEFAULT_TEXT_TOOLTIP)
-    } else {
-      updateTooltipTextWithoutShowing(DEFAULT_TEXT_TOOLTIP)
-    }
-  }
-
-
-  const handleActivePanelTooltip = () => {
-
-    if (!panelThatIsActive) return
-
-    if (!alreadyTooltipBeenShown(panelThatIsActive.segment)) {
-      writeToStorage((prev) => [...prev, panelThatIsActive.segment])
-      updateTooltipTextAndShow(panelThatIsActive.aboutRu)
-    } else {
-      updateTooltipTextWithoutShowing(panelThatIsActive.aboutRu)
-    }
-  }
+  });
 
   useEffect(() => {
     if (!panelThatIsActive) handleDefaultTooltip()
     else handleActivePanelTooltip()
   }, [panelThatIsActive])
 
+  function handleDefaultTooltip() {
+
+    if (!alreadyTooltipBeenShown('default')) {
+      writeToStorage(prev => [...prev, 'default'])
+      updateTooltipState({
+        segment: 'default',
+        isVisible: true,
+        text: DEFAULT_TEXT_TOOLTIP
+      })
+    } else {
+      updateTooltipState(prevState => ({
+        ...prevState,
+        segment: 'default',
+        text: DEFAULT_TEXT_TOOLTIP
+      }))
+    }
+  }
+
+  function handleActivePanelTooltip() {
+
+    if (!panelThatIsActive) return
+
+    if (!alreadyTooltipBeenShown(panelThatIsActive.segment)) {
+      writeToStorage((prev) => [...prev, panelThatIsActive.segment])
+      updateTooltipState({
+        segment: panelThatIsActive.segment,
+        isVisible: true,
+        text: panelThatIsActive.aboutRu
+      })
+    } else {
+      updateTooltipState(prevState => ({
+        // panel extends from prev state such as we nedded save panel is open if it's open
+        ...prevState,
+        segment: panelThatIsActive.segment,
+        text: panelThatIsActive.aboutRu
+      }))
+    }
+  }
+
+  function alreadyTooltipBeenShown(target: Storage) {
+    return storage.includes(target)
+  }
+
   return {
     ...tooltipState,
-    show: () => setTooltipState(prevState => ({ ...prevState, isVisible: true })),
-    hide: () => setTooltipState(prevState => ({ ...prevState, isVisible: false }))
+    show: () => updateTooltipState(prevState => ({ ...prevState, isVisible: true })),
+    hide: () => updateTooltipState(prevState => ({ ...prevState, isVisible: false }))
   }
 }

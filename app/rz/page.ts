@@ -1,1 +1,1 @@
-export {AnnouncementsGrid as default} from "@/pages/rz";
+export {AnnouncementsPage as default} from "@/pages/announcements";

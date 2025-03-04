@@ -1,4 +1,5 @@
 import { Logo } from "@/shared/ui/logo/Logo";
+import { NavigationTooltip } from "@/widgets/navigation";
 import { Flex } from "@mantine/core";
 import { ReactNode } from "react";
 

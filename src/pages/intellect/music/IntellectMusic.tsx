@@ -1,6 +1,4 @@
-import { Filter } from "@/pages/instincts/music/ui/Filter";
-import { SearchBar } from "@/pages/instincts/music/ui/SearchBar";
-import { TopBar } from "@/shared/ui/top-bar/TopBar";
+// import { SearchAndFilters } from "@/widgets/search-and-filters/SearchAndFilters";
 
 
 
@@ -11,11 +9,11 @@ export default async function IntellectMusicPage() {
 
   return (
     <div>
-      <TopBar
-        variant="intellect"
-        searchBar={<SearchBar />}
-        filterToggles={<Filter />}
-      />
+      {/* <SearchAndFilters
+        segment="intellect"
+        filters={null}
+        search={null}
+      /> */}
       {/* <CardListSkeleton /> */}
     </div>
   );

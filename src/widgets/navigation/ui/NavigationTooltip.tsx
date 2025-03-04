@@ -1,23 +1,22 @@
 "use client"
 
-import { ReactNode } from "react"
 import { createPortal } from "react-dom"
+import { useEffect, useRef } from "react";
+import { IconMichelinStarGreen } from "@tabler/icons-react";
 import { useNavigationTooltip } from "../lib/useNavigationTooltip";
 import { IconX } from "@tabler/icons-react";
 import classes from '../navogation.module.css';
 import { clsx } from "clsx";
 
 
+export const NavigationTooltip = () => {
 
-
-export const NavigationTooltip = ({ triggerIcon }: { triggerIcon: ReactNode }) => {
-
-  const { text, isVisible, show, hide } = useNavigationTooltip()
+  const { segment, text, isVisible, show, hide } = useNavigationTooltip()
 
   return (
     <>
       <div role="button" aria-label="Open navigation tooltip" className={classes.trigger} onClick={show}>
-        {!isVisible && triggerIcon}
+        {!isVisible && <IconMichelinStarGreen strokeWidth={3} className={clsx(classes.trigger_icon, classes[segment])} />}
       </div>
       <Tooltip isVisible={isVisible} text={text} onClose={hide} />
     </>
@@ -31,6 +30,18 @@ type Tooltip = {
 }
 
 function Tooltip({ isVisible, text, onClose }: Tooltip) {
+
+  const element = useRef<Element | null>(null)
+
+  useEffect(() => {
+    element.current = document.body
+  }, [])
+
+
+  if (!element.current) {
+    return null
+  }
+
   return createPortal(
     <div className={clsx(classes.tooltip, { [classes.tooltip_visible]: isVisible })}>
       <h1 className={classes.tooltip_title}>{text}</h1>
@@ -38,5 +49,5 @@ function Tooltip({ isVisible, text, onClose }: Tooltip) {
         <IconX size={17} />
       </div>
     </div >
-    , document.body)
+    , element.current)
 }

@@ -593,6 +593,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@reatom/core@npm:^3.10.1":
+  version: 3.10.1
+  resolution: "@reatom/core@npm:3.10.1"
+  checksum: 10c0/801e5596791fd2e09fd69123db3a6d302b93d53b3bb13178256dcf3039f588f432c34c3c07ea3e4f407dc84a007e75b9bc26fc581cbc3cf040d505d4af724447
+  languageName: node
+  linkType: hard
+
 "@rushstack/eslint-patch@npm:^1.3.3":
   version: 1.5.1
   resolution: "@rushstack/eslint-patch@npm:1.5.1"
@@ -2856,6 +2863,7 @@ __metadata:
     "@mantine/hooks": "npm:7.15.3"
     "@mantine/notifications": "npm:^7.15.3"
     "@mantine/spotlight": "npm:^7.15.3"
+    "@reatom/core": "npm:^3.10.1"
     "@tabler/icons-react": "npm:^3.28.1"
     "@types/node": "npm:20.14.8"
     "@types/react": "npm:^19.0.0"

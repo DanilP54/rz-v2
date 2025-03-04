@@ -1,10 +1,9 @@
-"use client"
 import {
   Chip,
   Flex
 } from "@mantine/core"
 
-export const FilterTogglesSkeleton = () => {
+export const FiltersSkeleton = () => {
   return (
     <>
       <Flex align={'center'} gap={'md'}>

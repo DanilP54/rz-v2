@@ -5,7 +5,7 @@ import Link from "next/link";
 import { IconAlignBoxLeftTop, IconBrandOffice } from "@tabler/icons-react";
 import classes from "./feedPage.module.css";
 import { FeedTabs } from "./ui/FeedTabs";
-import { AuthLinks } from "@/shared/ui/auth-links/AuthLinks";
+import { AuthButtons } from "@/shared/ui/auth-buttons/AuthButtons";
 import { SearchGlobal } from "@/features/global-search/ui/SearchGlobal";
 import { SearchButton } from "@/shared/ui/search-button/SearchButton";
 
@@ -52,7 +52,7 @@ const FeedPage = () => {
         >
           <Flex align={"center"} justify={"space-between"}>
             <SearchGlobal trigger={<SearchButton width={200} feedPage />} />
-            <AuthLinks />
+            <AuthButtons />
           </Flex>
           <Stack component={"aside"}></Stack>
         </Stack>
