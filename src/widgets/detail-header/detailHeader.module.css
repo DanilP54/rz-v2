@@ -1,8 +1,7 @@
 .header {
-    padding: 8px 300px;
-    color: white;
+    padding: 4px 420px;
+    color: black;
 }
-
 
 .header.instincts {
     background-color: var(--instincts-button-bg-color);

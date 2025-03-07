@@ -1,6 +1,6 @@
 import { Flex } from "@mantine/core"
 import { ReactNode } from "react";
-import { Logo } from "@/shared/ui/logo/Logo";
+import Image from "next/image";
 
 type LayoutProps = {
   themeToggle?: ReactNode;
@@ -15,7 +15,13 @@ export const Layout = ({
 }: LayoutProps) => {
   return (
     <Flex component="header" align={"center"} justify={"space-between"}>
-      <Logo size="xs" redirectOnClickTo="/rz" />
+      <Image
+        src={"/logo/logo-dark.png"}
+        width={50}
+        height={50}
+        alt="logo"
+        priority
+      />
       <Flex align={"center"} gap={70}>
         {themeToggle}
         {languageSwitcher}

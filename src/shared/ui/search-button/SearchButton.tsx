@@ -1,39 +1,26 @@
 import { Flex, Text, UnstyledButton } from "@mantine/core"
 import { IconSearch } from "@tabler/icons-react"
 import classes from "./searchButton.module.css";
+import { clsx } from "clsx";
 
 type Pages = 'feed' | 'radio' | 'details' | 'rz';
 
-
-
 type SearchButtonProps = {
   page: Pages;
-  feedPage?: true
-  radioPage?: true
+  placeholder?: string
 }
 
-
-
-
-export const SearchButton = ({ feedPage, radioPage }: SearchButtonProps) => {
+export const SearchButton = ({ page, placeholder = 'Поиск' }: SearchButtonProps) => {
   return (
     <UnstyledButton
-      styles={{
-        root: {
-          // "--custom-text-color-search-button": "red",
-          // "--custom-bg-color-search-button": "blue"
-        }
-      }}
-      feedpage={feedPage?.toString()}
-      radiopage={radioPage?.toString()}
       w={200}
-      className={classes.search_button}>
+      className={clsx(classes.search_button, classes[page])}>
       <Flex
         align={'center'}
         gap={15}
       >
-        <IconSearch size={15} className={classes.search_icon} />
-        <Text className={classes.search_text} size={'sm'}>Поиск</Text>
+        <IconSearch size={15} className={clsx(classes.search_button_icon, classes[page])} />
+        <Text className={clsx(classes.search_button_text, classes[page])} size={'sm'}>{placeholder}</Text>
       </Flex>
     </UnstyledButton>
   )

@@ -2,7 +2,7 @@
 
 import { createPortal } from "react-dom"
 import { useEffect, useRef } from "react";
-import { IconMichelinStarGreen } from "@tabler/icons-react";
+import { IconTopologyStar3 } from "@tabler/icons-react";
 import { useNavigationTooltip } from "../lib/useNavigationTooltip";
 import { IconX } from "@tabler/icons-react";
 import classes from '../navogation.module.css';
@@ -16,7 +16,7 @@ export const NavigationTooltip = () => {
   return (
     <>
       <div role="button" aria-label="Open navigation tooltip" className={classes.trigger} onClick={show}>
-        {!isVisible && <IconMichelinStarGreen strokeWidth={3} className={clsx(classes.trigger_icon, classes[segment])} />}
+        {!isVisible && <IconTopologyStar3 strokeWidth={3} className={clsx(classes.trigger_icon, classes[segment])} />}
       </div>
       <Tooltip isVisible={isVisible} text={text} onClose={hide} />
     </>

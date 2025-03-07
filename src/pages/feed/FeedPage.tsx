@@ -51,7 +51,7 @@ const FeedPage = () => {
           style={{ borderLeft: ".5px solid rgba(0,0,0, .1)" }}
         >
           <Flex align={"center"} justify={"space-between"}>
-            <SearchGlobal trigger={<SearchButton width={200} feedPage />} />
+            <SearchGlobal trigger={<SearchButton page="feed" />} />
             <AuthButtons />
           </Flex>
           <Stack component={"aside"}></Stack>

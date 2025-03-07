@@ -13,18 +13,6 @@ import { usePathname } from "next/navigation";
 export const theme = createTheme({
   defaultRadius: "xs",
   components: {
-    UnstyledButton: UnstyledButton.extend({
-      vars: (theme, props) => ({
-        root: {
-          "--custom-text-color-search-button": props.feedpage
-            ? theme.colors.dark[2]
-            : theme.colors.dark[3],
-          "--custom-bg-color-search-button": props.feedpage
-            ? darken(theme.other.feedBgColorDark, 0.2)
-            : theme.colors.dark[9],
-        },
-      }),
-    }),
     Chip: Chip.extend({
       styles: (theme) => ({
         label: {
@@ -45,10 +33,8 @@ export const theme = createTheme({
     }),
   },
   other: {
-    primaryBgColorDark: "black",
+    primaryBgColorDark: 'black',
     primaryBgColorLight: "#fff",
-    feedBgColorDark: "#354a5f",
-    feedBgColorLight: "rgb(254, 249, 231)",
   },
 });
 

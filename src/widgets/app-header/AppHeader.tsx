@@ -12,7 +12,7 @@ export const AppHeader = ({ navigationTooltipAction }: { navigationTooltipAction
       navigationTooltipAction={navigationTooltipAction}
       themeToggle={<ThemeToggle />}
       langSwitchLinks={<LangSwitchLinks />}
-      globalSearch={<SearchGlobal trigger={<SearchButton />} />}
+      globalSearch={<SearchGlobal trigger={<SearchButton page="rz" />} />}
       authLinks={<AuthButtons />}
     />
   );

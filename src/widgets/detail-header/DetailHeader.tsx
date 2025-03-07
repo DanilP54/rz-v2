@@ -8,6 +8,7 @@ import { IconSearch } from "@tabler/icons-react";
 import { NavigationSegments } from "@/shared/types/Segments";
 import clsx from "clsx";
 
+
 type DetailHeaderProps = {
   segment: NavigationSegments
 }
@@ -18,7 +19,7 @@ export const DetailsHeader = ({ segment }: DetailHeaderProps) => {
       <Layout
         themeToggle={<ThemeToggle />}
         languageSwitcher={<LangSwitchLinks />}
-        globalSearch={<SearchGlobal trigger={<SearchButton />} />}
+        globalSearch={<SearchGlobal trigger={<SearchButton page="details" />} />}
       />
     </header>
   )

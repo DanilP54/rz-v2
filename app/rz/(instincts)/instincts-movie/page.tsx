@@ -1,1 +1,0 @@
-export {InstinctsMoviePage as default} from '@/pages/instincts/movie';
