@@ -1,1 +1,1 @@
-export {default as BalanceMusicPage} from './BalanceMusic';
+export { default as BalanceMusicPage } from './page';

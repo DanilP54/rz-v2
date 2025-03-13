@@ -1,1 +1,1 @@
-export {default as IntellectMoviePage} from './IntellectMovie';
+export { default as IntellectMoviePage } from './page';

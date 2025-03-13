@@ -1,4 +1,4 @@
-import { SearchAndFiltersBar } from "./SearchAndFiltersBar";
+import { SearchAndFilters } from "./SearchAndFilters";
 
 
-export { SearchAndFiltersBar }
+export { SearchAndFilters }

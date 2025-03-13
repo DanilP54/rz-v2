@@ -3,6 +3,14 @@
     чтобы кнопка была по ширине ровно на границе логотипа
 */
 
+.toggle_wrapper {
+    order: 0;
+}
+
+.toggle_wrapper.active {
+    order: 1;
+}
+
 .toggle {
     width: 120px;
     min-height: 40px;
@@ -99,10 +107,10 @@
 
 .button_close {
     display: flex;
-    alignItems: center;
+    align-items: center;
     justify-content: center;
     cursor: pointer;
-    textAlign: right;
+    text-align: right;
     color: white;
     border-radius: 50%;
     padding: 4px;

@@ -1,7 +1,8 @@
 {
-  "editor.fontWeight": "100",
+  "editor.fontWeight": "normal",
   "editor.fontSize": 16,
   "editor.cursorBlinking": "blink",
   "editor.cursorStyle": "line",
-  "workbench.editor.pinnedTabsOnSeparateRow": false
+  "workbench.editor.pinnedTabsOnSeparateRow": false,
+  "editor.fontFamily": "JetBrains Mono"
 }

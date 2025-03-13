@@ -1,1 +1,1 @@
-export { default as BalanceArtPage } from "./BalanceArt";
+export { default as BalanceArtPage } from "./page";

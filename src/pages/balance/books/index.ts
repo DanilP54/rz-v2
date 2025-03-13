@@ -1,1 +1,1 @@
-export { default as BalanceBooksPage } from "./BalanceBooks";
+export { default as BalanceBooksPage } from "./page";

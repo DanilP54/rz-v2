@@ -2,6 +2,7 @@ import { Group } from "@mantine/core";
 import Link from "next/link";
 import classes from './authButtons.module.css';
 
+
 export const AuthButtons = ({ gap = 10 }: { gap?: number }) => {
   return (
     <>

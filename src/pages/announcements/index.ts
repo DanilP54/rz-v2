@@ -1,3 +1,3 @@
-import {default as AnnouncementsPage}  from './Announcements';
+import { default as AnnouncementsPage } from "./page";
 
-export {AnnouncementsPage};
+export { AnnouncementsPage };

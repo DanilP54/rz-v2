@@ -1,6 +1,7 @@
 import { Flex } from "@mantine/core"
 import { ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 type LayoutProps = {
   themeToggle?: ReactNode;
@@ -15,13 +16,18 @@ export const Layout = ({
 }: LayoutProps) => {
   return (
     <Flex component="header" align={"center"} justify={"space-between"}>
-      <Image
-        src={"/logo/logo-dark.png"}
-        width={50}
-        height={50}
-        alt="logo"
-        priority
-      />
+      <Link href={'/rz'} style={{
+        display: 'flex',
+        alignItems: 'center'
+      }}>
+        <Image
+          src={"/logo/logo-dark.png"}
+          width={50}
+          height={50}
+          alt="logo"
+          priority
+        />
+      </Link>
       <Flex align={"center"} gap={70}>
         {themeToggle}
         {languageSwitcher}

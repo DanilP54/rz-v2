@@ -1,1 +1,1 @@
-export {default as IntellectMusicPage} from './IntellectMusic';
+export { default as IntellectMusicPage } from './page';

@@ -46,16 +46,16 @@ export const resolver: CSSVariablesResolver = (theme) => {
     feedBgColorLight,
   } = theme.other;
 
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
-  const feedPage = pathname === "/feed";
+  // const feedPage = pathname === "/feed";
 
   return {
     dark: {
-      "--mantine-color-body": feedPage ? feedBgColorDark : primaryBgColorDark,
+      // "--mantine-color-body": feedPage ? feedBgColorDark : primaryBgColorDark,
     },
     light: {
-      "--mantine-color-body": feedPage ? feedBgColorLight : primaryBgColorLight,
+      // "--mantine-color-body": feedPage ? feedBgColorLight : primaryBgColorLight,
     },
     variables: {
       "--instincts-button-bg-color": "hsl(0, 73%, 64%)",

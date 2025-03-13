@@ -3,7 +3,7 @@ import "@mantine/carousel/styles.css";
 import "@mantine/core/styles.css";
 import "@/app/styles/global.css";
 
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
 import { ColorSchemeScript, Container, mantineHtmlProps } from "@mantine/core";
 import { Providers } from "@/app/providers";
 import { Metadata } from "next";

@@ -17,7 +17,7 @@ export const SearchGlobal = ({ trigger }: { trigger: ReactNode }) => {
         actions={[]}
         // maxHeight={600}
         limit={query.length === 0 ? 0 : 30}
-        highlightQuery
+          highlightQuery
         query={query}
         // nothingFound={query ? "К сожалению, ничего не найдено" : "Пожулайста, введите запрос"}
         onQueryChange={(q) => setQuery(q)}

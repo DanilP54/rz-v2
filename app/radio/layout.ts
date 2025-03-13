@@ -1,1 +1,1 @@
-export {RadioLayout as default} from "@/app/layouts/RadioLayout";
+export { RadioLayout as default } from "@/app/layouts/radio/RadioLayout";

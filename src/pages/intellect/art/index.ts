@@ -1,1 +1,1 @@
-export { default as IntellectArtPage } from "./IntellectArt";
+export { default as IntellectArtPage } from "./page";

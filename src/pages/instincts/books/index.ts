@@ -1,1 +1,1 @@
-export {default as InstinctsBooksPage} from "./InstinctsBooks";
+export { default as InstinctsBooksPage } from "./page";

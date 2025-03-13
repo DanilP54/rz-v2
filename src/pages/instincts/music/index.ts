@@ -1,1 +1,1 @@
-export {default as InstinctsMusicPage} from './InstinctsMusic';
+export { default as InstinctsMusicPage } from './page';

@@ -1,1 +1,1 @@
-export {RzLayout as default} from "@/app/layouts/RzLayout";
+export { RzLayout as default } from "@/app/layouts/rz/RzLayout";

@@ -466,6 +466,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nanostores/logger@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@nanostores/logger@npm:0.4.0"
+  peerDependencies:
+    nanostores: ">=0.10.2"
+  checksum: 10c0/a7048016f5ec0e408a1d9943610ea27f35e0b1bd903cd2febfaf954c620c0de5dcade3b3f39fcbdcbe644267f41a0b7fc13c81684f32b6f94a3f1b233c4e790f
+  languageName: node
+  linkType: hard
+
+"@nanostores/persistent@npm:^0.10.2":
+  version: 0.10.2
+  resolution: "@nanostores/persistent@npm:0.10.2"
+  peerDependencies:
+    nanostores: ^0.9.0 || ^0.10.0 || ^0.11.0
+  checksum: 10c0/a7531c3de0a3b38002f285106f9a7cc0a8bcf29317802d28bb0ead688ba5ecb0594e6a32049cde8a014551b3fe0e1736156aabfdb2031086464db96dd4d22568
+  languageName: node
+  linkType: hard
+
+"@nanostores/react@npm:^0.8.4":
+  version: 0.8.4
+  resolution: "@nanostores/react@npm:0.8.4"
+  peerDependencies:
+    nanostores: ^0.9.0 || ^0.10.0 || ^0.11.0
+    react: ">=18.0.0"
+  checksum: 10c0/eea8b6934b9c6b79fc14c0217e83c51f7075849f5423f01326040937f8cfa5975e637b4e22ece20942b30d87d33af705de0a3ee34efdb07ee8fab25b0cef3552
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:15.0.1":
   version: 15.0.1
   resolution: "@next/env@npm:15.0.1"
@@ -2863,6 +2891,9 @@ __metadata:
     "@mantine/hooks": "npm:7.15.3"
     "@mantine/notifications": "npm:^7.15.3"
     "@mantine/spotlight": "npm:^7.15.3"
+    "@nanostores/logger": "npm:^0.4.0"
+    "@nanostores/persistent": "npm:^0.10.2"
+    "@nanostores/react": "npm:^0.8.4"
     "@reatom/core": "npm:^3.10.1"
     "@tabler/icons-react": "npm:^3.28.1"
     "@types/node": "npm:20.14.8"
@@ -2874,6 +2905,7 @@ __metadata:
     embla-carousel-react: "npm:^7.1.0"
     eslint: "npm:8.57.0"
     eslint-config-next: "npm:14.2.4"
+    nanostores: "npm:^0.11.4"
     next: "npm:15.0.1"
     postcss: "npm:^8.4.38"
     postcss-preset-mantine: "npm:1.17.0"
@@ -2964,6 +2996,13 @@ __metadata:
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 10c0/e3fb661aa083454f40500473bb69eedb85dc160e763150b9a2c567c7e9ff560ce028a9f833123b618a6ea742e311138b591910e795614a629029e86e180660f3
+  languageName: node
+  linkType: hard
+
+"nanostores@npm:^0.11.4":
+  version: 0.11.4
+  resolution: "nanostores@npm:0.11.4"
+  checksum: 10c0/45ce577ccd96938b756c238e5783b0de3369381905f164e7bd003794d34a3c1eb7bddb049699a48a35bb03d9745bcb3cd6ad549b5e81493b2de22ae2bdccf14c
   languageName: node
   linkType: hard
 

@@ -1,1 +1,1 @@
-export {default as NavigatorPage} from "./NavigatorPage"
+export { default as NavigatorPage } from "./page"
