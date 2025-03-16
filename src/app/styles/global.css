@@ -1,4 +1,15 @@
-:root {
+@layer reset, base, tokens, recipes, utilities;
+
+@layer base {
+    a {
+        font-weight: 600;
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+
+/* :root {
     --border-radius-bg-hover: .3rem;
 }
 
@@ -8,7 +19,11 @@ a {
     color: inherit;
 }
 
+html {
+    min-height: 100svh;
+}
 
 body {
     min-height: 100svh;
-}
+    transition: background-color .3s ease-out;
+} */

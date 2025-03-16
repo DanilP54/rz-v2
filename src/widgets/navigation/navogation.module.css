@@ -1,8 +1,3 @@
-/* todo:
-    сделать расчёт ширины исходя из padding header и width logo,
-    чтобы кнопка была по ширине ровно на границе логотипа
-*/
-
 .toggle_wrapper {
     order: 0;
 }
@@ -12,8 +7,8 @@
 }
 
 .toggle {
-    width: 120px;
-    min-height: 40px;
+    width: var(--panel-width);
+    min-height: var(--panel-height);
 }
 
 .toggle.instincts {
@@ -28,6 +23,12 @@
     background-color: var(--balance-button-bg-color);
 }
 
+.panel_wrapper {
+    position: sticky;
+    margin-top: 30px;
+    z-index: 999;
+    top: var(--panel-top-sticky-position);
+}
 
 .panel {
     flex: 1 1 0;

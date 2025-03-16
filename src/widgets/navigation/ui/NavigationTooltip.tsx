@@ -11,6 +11,7 @@ import { persistentAtom } from "@nanostores/persistent";
 import { usePathname } from "next/navigation";
 import { NavigationSegments } from "@/shared/types/Segments";
 import { $panels } from "../Navigation";
+import { NavigationPanel } from "../config";
 
 const DEFAULT_TEXT_TOOLTIP = 'Нажав на один из разноцветных баннеров, смотрите, слушайте и читайте подобранные нами произведения искусства, под ваше состояние. Выберите один из них - узнайте больше.'
 
@@ -29,28 +30,34 @@ function writeToLocalStorage(segment: LocalStorage) {
   $localStorage.set([...$localStorage.get(), segment])
 }
 
+function getActivePanel(panels: NavigationPanel[], pathname: string | null) {
+  return panels.find((s) => pathname?.includes(s.segment))
+}
 
 export const NavigationTooltip = () => {
-  
-  const state = useStore($panels)
+
+  const panels = useStore($panels)
+
   const [isVisible, setIsVisible] = useState(false)
+
   const pathname = usePathname()
-  const acitvePanel = state.find((s) => pathname?.includes(s.segment))
-  
+
+  const acitvePanel = getActivePanel(panels, pathname)
+
 
   useEffect(() => {
-    if(!acitvePanel) {
-      if(!alreadyTooltipBeenShown('default')) {
-        writeToLocalStorage('default') 
-        setIsVisible(true) 
-      } 
+    if (!acitvePanel) {
+      if (!alreadyTooltipBeenShown('default')) {
+        writeToLocalStorage('default')
+        setIsVisible(true)
+      }
     } else {
-      if(!alreadyTooltipBeenShown(acitvePanel.segment)) {
-        writeToLocalStorage(acitvePanel.segment) 
-        setIsVisible(true) 
+      if (!alreadyTooltipBeenShown(acitvePanel.segment)) {
+        writeToLocalStorage(acitvePanel.segment)
+        setIsVisible(true)
       }
     }
-  }, [acitvePanel]) 
+  }, [acitvePanel])
 
 
   const show = () => {
@@ -66,10 +73,10 @@ export const NavigationTooltip = () => {
       <div role="button" aria-label="Open navigation tooltip" className={classes.trigger} onClick={show}>
         {!isVisible && <IconTopologyStar3 strokeWidth={3} className={clsx(classes.trigger_icon, classes[acitvePanel ? acitvePanel.segment : 'default'])} />}
       </div>
-      <Tooltip 
-        isVisible={isVisible} 
-        text={acitvePanel?.aboutRu} 
-        onClose={hide} 
+      <Tooltip
+        isVisible={isVisible}
+        text={acitvePanel?.aboutRu}
+        onClose={hide}
       />
     </>
   )

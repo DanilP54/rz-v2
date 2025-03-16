@@ -1,9 +1,9 @@
 import { NavigationSegments } from "@/shared/types/Segments";
 
 export type NavigationLinks = {
-  label: string,
-  path: string
-}
+  label: string;
+  path: string;
+};
 
 export type NavigationPanel = {
   segment: NavigationSegments;
@@ -15,12 +15,11 @@ export const BASE_INSTINCTS_PATH = "/rz/instincts";
 export const BASE_INTELLECT_PATH = "/rz/intellect";
 export const BASE_BALANCE_PATH = "/rz/balance";
 
-
 export const navigationPanelsConfig: NavigationPanel[] = [
   {
     segment: "instincts",
     aboutRu:
-      "На красном банере, мы подобрали работы авторов, делающих акцент на человеческих инстинктах, где ищется смысл через желание и самоуничтожение. Здесь вы найдете насилие, похоть, нигилизм,черный юмор и тому подобное.",
+      "На красном банере, мы подобрали работы авторов, делающих акцент на человеческих инстинктах, где ищется смысл через желание и самоуничтожение. Здесь вы найдете насилие, похоть, нигилизм, черный юмор и тому подобное.",
     navigationLinks: [
       { path: `${BASE_INSTINCTS_PATH}-movie`, label: "Фильмы" },
       { path: `${BASE_INSTINCTS_PATH}-music`, label: "Музыка" },
