@@ -1,4 +1,6 @@
-import { NavigationSegments } from "@/shared/types/Segments";
+import { AppSegments } from "@/shared/types/Segments";
+
+export type NavigationSegments = AppSegments;
 
 export type NavigationLinks = {
   label: string;
@@ -30,7 +32,7 @@ export const navigationPanelsConfig: NavigationPanel[] = [
   {
     segment: "intellect",
     aboutRu:
-      "На синнем баннере - наша коллекция образовательных, интеллектульных и интеллегентных работ авторов, нашедших свой смысл и жизненный путь в возвышенном, научном и созидательном. Здесь, Вы найдете оперы, документалки, образовательные лекции, и тому подобное.",
+      "На синем баннере - наша коллекция образовательных, интеллектуальных и интеллигентных работ авторов, нашедших свой смысл и жизненный путь в возвышенном, научном и созидательном. Здесь, Вы найдете оперы, документалки, образовательные лекции, и тому подобное.",
     navigationLinks: [
       { path: `${BASE_INTELLECT_PATH}-movie`, label: "Фильмы" },
       { path: `${BASE_INTELLECT_PATH}-music`, label: "Музыка" },
@@ -41,7 +43,7 @@ export const navigationPanelsConfig: NavigationPanel[] = [
   {
     segment: "balance",
     aboutRu:
-      "На зелёном баннере, мы собрали сбалансированную коллекцию произведений, где авторы грамотно и умело совмешают в себе направление и идеи, выражая, таким образом, сложные или противоречивые мысли , доступно и ёмко. Здесь Вы найдёте внежанровую музыку и фильмы, эксперементальную живопись и тому подобное.",
+      "На зелёном баннере, мы собрали сбалансированную коллекцию произведений, где авторы грамотно и умело совмещают в себе направление и идеи, выражая, таким образом, сложные или противоречивые мысли, доступно и ёмко. Здесь Вы найдёте внежанровую музыку и фильмы, экспериментальную живопись и тому подобное.",
     navigationLinks: [
       { path: `${BASE_BALANCE_PATH}-movie`, label: "Фильмы" },
       { path: `${BASE_BALANCE_PATH}-music`, label: "Музыка" },
@@ -49,4 +51,4 @@ export const navigationPanelsConfig: NavigationPanel[] = [
       { path: `${BASE_BALANCE_PATH}-art`, label: "Живопись" },
     ],
   },
-];
+] as const;

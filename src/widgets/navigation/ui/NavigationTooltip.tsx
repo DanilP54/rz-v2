@@ -2,31 +2,32 @@
 
 import { createPortal } from "react-dom"
 import { useEffect, useRef, useState } from "react";
-import { IconTopologyStar3 } from "@tabler/icons-react";
+import { IconBrandReactNative } from "@tabler/icons-react";
 import { IconX } from "@tabler/icons-react";
 import classes from '../navogation.module.css';
 import { clsx } from "clsx";
 import { useStore } from "@nanostores/react";
 import { persistentAtom } from "@nanostores/persistent";
 import { usePathname } from "next/navigation";
-import { NavigationSegments } from "@/shared/types/Segments";
+import { NavigationSegments } from "../config";
 import { $panels } from "../Navigation";
 import { NavigationPanel } from "../config";
 
-const DEFAULT_TEXT_TOOLTIP = 'Нажав на один из разноцветных баннеров, смотрите, слушайте и читайте подобранные нами произведения искусства, под ваше состояние. Выберите один из них - узнайте больше.'
+export const DEFAULT_TEXT_TOOLTIP = 'Нажав на один из разноцветных баннеров, смотрите, слушайте и читайте подобранные нами произведения искусства, под ваше состояние. Выберите один из них - узнайте больше.'
+export const DEFAULT_TOOLTIP_SEGMENT = 'default'
 
-type LocalStorage = NavigationSegments | 'default'
+export type SegmentsLocalStorage = NavigationSegments | typeof DEFAULT_TOOLTIP_SEGMENT
 
-export const $localStorage = persistentAtom<LocalStorage[]>('navigationTooltipsThatWereShown', [], {
+export const $localStorage = persistentAtom<SegmentsLocalStorage[]>('navigationTooltipsThatWereShown', [], {
   encode: JSON.stringify,
   decode: JSON.parse
 })
 
-function alreadyTooltipBeenShown(segment: LocalStorage) {
+function alreadyTooltipBeenShown(segment: SegmentsLocalStorage) {
   return $localStorage.get().includes(segment)
 }
 
-function writeToLocalStorage(segment: LocalStorage) {
+function writeToLocalStorage(segment: SegmentsLocalStorage) {
   $localStorage.set([...$localStorage.get(), segment])
 }
 
@@ -42,22 +43,22 @@ export const NavigationTooltip = () => {
 
   const pathname = usePathname()
 
-  const acitvePanel = getActivePanel(panels, pathname)
+  const activePanel = getActivePanel(panels, pathname)
 
 
   useEffect(() => {
-    if (!acitvePanel) {
+    if (!activePanel) {
       if (!alreadyTooltipBeenShown('default')) {
         writeToLocalStorage('default')
         setIsVisible(true)
       }
     } else {
-      if (!alreadyTooltipBeenShown(acitvePanel.segment)) {
-        writeToLocalStorage(acitvePanel.segment)
+      if (!alreadyTooltipBeenShown(activePanel.segment)) {
+        writeToLocalStorage(activePanel.segment)
         setIsVisible(true)
       }
     }
-  }, [acitvePanel])
+  }, [activePanel])
 
 
   const show = () => {
@@ -71,24 +72,27 @@ export const NavigationTooltip = () => {
   return (
     <>
       <div role="button" aria-label="Open navigation tooltip" className={classes.trigger} onClick={show}>
-        {!isVisible && <IconTopologyStar3 strokeWidth={3} className={clsx(classes.trigger_icon, classes[acitvePanel ? acitvePanel.segment : 'default'])} />}
+        {!isVisible &&
+          <IconBrandReactNative
+            data-testid="nav-tooltip-trigger"
+            strokeWidth={3}
+            className={clsx(classes.trigger_icon, classes[activePanel ? activePanel.segment : DEFAULT_TOOLTIP_SEGMENT])}
+          />}
       </div>
       <Tooltip
         isVisible={isVisible}
-        text={acitvePanel?.aboutRu}
+        text={activePanel ? activePanel.aboutRu : DEFAULT_TEXT_TOOLTIP}
         onClose={hide}
       />
     </>
   )
 }
 
-type Tooltip = {
+function Tooltip({ isVisible, text, onClose }: {
   isVisible: boolean;
   text?: string;
   onClose: () => void;
-}
-
-function Tooltip({ isVisible, text, onClose }: Tooltip) {
+}) {
 
   const element = useRef<Element | null>(null)
 
@@ -103,7 +107,7 @@ function Tooltip({ isVisible, text, onClose }: Tooltip) {
 
   return createPortal(
     <div className={clsx(classes.tooltip, { [classes.tooltip_visible]: isVisible })}>
-      <h1 className={classes.tooltip_title}>{text || DEFAULT_TEXT_TOOLTIP}</h1>
+      <h1 data-testid="nav-tooltip-description" className={classes.tooltip_title}>{text}</h1>
       <div onClick={onClose} role="button" aria-label="Close" className={classes.button_close}>
         <IconX size={17} />
       </div>

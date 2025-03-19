@@ -1,0 +1,32 @@
+.details_wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.details_grid {
+    flex: 1 1 0;
+    display: flex;
+}
+
+.details_left_section {
+    width: clamp(200px, 20vw, 400px);
+    background-color: rgb(22, 22, 22);
+    height: 100%;
+}
+
+.details_center_section {
+    flex: 1 1 0;
+    height: 100%;
+}
+
+.details_right_section {
+    width: clamp(200px, 20vw, 400px);
+    background-color: rgb(22, 22, 22);
+    height: 100%;
+}
+
+.arrow_back {
+    margin-top: 20px;
+    padding-left: 50px;
+}

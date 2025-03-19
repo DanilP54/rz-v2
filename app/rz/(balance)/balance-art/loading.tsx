@@ -1,0 +1,1 @@
+export {BalanceLoading as default} from '@/app/loadings/BalanceLoading'

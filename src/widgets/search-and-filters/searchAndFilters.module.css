@@ -2,7 +2,7 @@
     padding: 10px 68px;
     position: sticky;
     top: var(--panel-height);
-    z-index: 999;
+    z-index: 100;
 }
 
 /* Выделить отдельно переменные для вариантов */

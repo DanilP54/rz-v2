@@ -2,7 +2,7 @@ import React from "react";
 import { Flex } from "@mantine/core";
 import classes from "./searchAndFilters.module.css";
 import clsx from "clsx";
-import { NavigationSegments } from "@/shared/types/Segments";
+import { NavigationSegments } from "../navigation/config";
 
 export const SearchAndFilters = ({
   segment,

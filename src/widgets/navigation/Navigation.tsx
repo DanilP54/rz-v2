@@ -5,7 +5,7 @@ import { Stack } from "@mantine/core";
 import { NavigationPanel, navigationPanelsConfig } from "./config";
 import { useStore } from "@nanostores/react";
 import { useState } from "react";
-import { NavigationSegments } from "@/shared/types/Segments";
+import { NavigationSegments } from "./config";
 import classes from './navogation.module.css'
 import { atom } from "nanostores";
 import { logger } from "@nanostores/logger";

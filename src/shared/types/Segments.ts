@@ -1,1 +1,1 @@
-export type NavigationSegments = "instincts" | "intellect" | "balance";
+export type AppSegments = "instincts" | "intellect" | "balance";

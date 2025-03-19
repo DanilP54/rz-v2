@@ -26,7 +26,7 @@
 .panel_wrapper {
     position: sticky;
     margin-top: 30px;
-    z-index: 999;
+    z-index: 100;
     top: var(--panel-top-sticky-position);
 }
 
@@ -78,11 +78,11 @@
     position: absolute;
     top: -500px;
     left: 200px;
-    transition: top .2s ease;
     border: 4px solid #333;
     padding: 5px 10px;
     background-color: #222;
     border-radius: 3px;
+    transition: top .3s ease;
 }
 
 .tooltip.tooltip_visible {
