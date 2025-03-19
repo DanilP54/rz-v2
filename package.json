@@ -6,7 +6,7 @@
     "prepare": "panda codegen",
     "dev": "next dev --turbopack",
     "test": "vitest",
-    "test:p": "playwright test",
+    "playwright test": "playwright test",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -2,8 +2,6 @@ import { test as base, type Locator } from "@playwright/test";
 import { IPanel, ITooltip, NavigationComponent, Panels } from "./fixture";
 import { navigationPanelsConfig, NavigationSegments } from "../config";
 
-const BASE_URL = "http://localhost:3000/rz"
-
 type NavigationFixture = {
   navigation: NavigationComponent
 }
@@ -59,13 +57,11 @@ test.describe("The user selects a panel, but the prompts don't pop up because th
       let panel: IPanel
       let tooltip: ITooltip
 
-      test.beforeEach(async ({ navigation, page, baseURL }) => {
+      test.beforeEach(async ({ navigation, page }) => {
         panel = navigation.initPanel(segment)
         tooltip = navigation.getTooltipFor(segment)
 
-        if (baseURL) {
-          await page.goto(baseURL)
-        }
+        await page.goto('/rz')
 
 
         await tooltip.writeToLocalStorage()
