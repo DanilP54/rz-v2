@@ -40,8 +40,11 @@ build/Release
 
 # Dependency directories
 node_modules/
-.gigaide
-.vscode
+.gigaide/
+.vscode/
+.idea/
+.yarn/
+playwright-report/
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
