@@ -2,21 +2,7 @@
 import { Modal } from "@mantine/core"
 import { useDisclosure, useHover } from "@mantine/hooks";
 import { IconAirBalloonFilled } from "@tabler/icons-react";
-import { css } from "../../../../styled-system/css";
-import { ComponentType } from "react";
-
-const container = css({
-  backgroundColor: 'rgba(0,0, 0, 0.8)',
-  position: 'fixed',
-  bottom: 10,
-  right: 5,
-  cursor: 'pointer',
-  display: 'flex',
-  alignItems: 'center',
-  padding: 3,
-  borderRadius: '50%'
-})
-
+import classes from './idea.module.css';
 
 export const IdeaModal = () => {
 
@@ -28,7 +14,7 @@ export const IdeaModal = () => {
       <Modal opened={opened} onClose={close} title="Do you have idea? Write to us" centered>
         {/* { Content} */}
       </Modal>
-      <div onClick={open} ref={ref} className={container}>
+      <div onClick={open} ref={ref} className={classes.container}>
         <IconAirBalloonFilled color={'yellow'} size={25} />
       </div>
     </>

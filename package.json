@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "next dev --turbopack",
+    "dev": "rm -rf .next &&next dev --turbopack",
     "test": "vitest",
     "playwright test": "playwright test",
     "build": "next build",
@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^9.3.0",
-    "@pandacss/dev": "^0.53.1",
     "@playwright/test": "^1.51.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

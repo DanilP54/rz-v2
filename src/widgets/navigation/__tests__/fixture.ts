@@ -49,7 +49,7 @@ class Panel implements IPanel {
   }
 
   async select(): Promise<void> {
-    await this._page.goto(`${process.env.BASE_URL}/rz/${this._panel.segment}-movie`)
+    await this._page.goto(`/rz/${this._panel.segment}-movie`)
   }
 
   async assertIsVisible(): Promise<void> {
