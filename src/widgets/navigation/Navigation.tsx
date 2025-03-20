@@ -8,7 +8,6 @@ import { useState } from "react";
 import { NavigationSegments } from "./config";
 import classes from './navogation.module.css'
 import { atom } from "nanostores";
-import { logger } from "@nanostores/logger";
 
 export const $panels = atom<NavigationPanel[]>(navigationPanelsConfig)
 
@@ -34,8 +33,3 @@ export const Navigation = () => {
   );
 };
 
-if (process.env.NODE_ENV === 'development') {
-  logger({
-    "PANELS STATE": $panels
-  });
-}

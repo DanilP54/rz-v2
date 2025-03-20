@@ -27,7 +27,6 @@ const SEGMENTS = navigationPanelsConfig.reduce((acc, panel) => {
 test.describe("The user selects a segments panel for the first time and sees a tooltips", () => {
 
   SEGMENTS.forEach((segment) => {
-
     test.describe(segment.toUpperCase(), () => {
       let panel: IPanel
       let tooltip: ITooltip
@@ -52,7 +51,6 @@ test.describe("The user selects a segments panel for the first time and sees a t
 test.describe("The user selects a panel, but the prompts don't pop up because the user has already seen them.", () => {
 
   SEGMENTS.forEach((segment) => {
-
     test.describe(segment.toUpperCase(), () => {
       let panel: IPanel
       let tooltip: ITooltip
