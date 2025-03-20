@@ -2,7 +2,7 @@
 import { Modal } from "@mantine/core"
 import { useDisclosure, useHover } from "@mantine/hooks";
 import { IconAirBalloonFilled } from "@tabler/icons-react";
-import classes from './idea.module.css';
+import classes from "./idea.module.css";
 
 export const IdeaModal = () => {
 
